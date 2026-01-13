@@ -75,8 +75,9 @@ export default function Home() {
         </motion.div>
       </section>
 
-     {/* About Section */}
-     <section className="py-20 md:py-32 bg-white dark:bg-dark-bg">
+   
+{/* About Section */}
+<section className="py-20 md:py-32 bg-white dark:bg-dark-bg">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Left Column - Images */}
@@ -85,30 +86,31 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative"
+              className="relative h-[500px]"
             >
-              <div className="relative w-4/5 aspect-[4/5]">
+              {/* Large image - back layer */}
+              <div className="absolute top-0 left-0 w-3/5 aspect-[4/5] z-0">
                 <Image
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop"
                   alt="Photographer"
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-lg"
                 />
               </div>
               
-              {/* Tag positioned in the free space */}
-              <div className="absolute top-[60%] right-0 bg-primary text-white p-4 rounded-lg shadow-lg z-20">
+              {/* Tag positioned with spacing from both images */}
+              <div className="absolute top-[42%] left-[50%] bg-primary text-white p-4 rounded-lg shadow-lg z-20">
                 <div className="text-3xl font-bold">100+</div>
                 <div className="text-sm">Top Projects Done</div>
               </div>
               
-              {/* Small image positioned lower and outside */}
-              <div className="absolute top-[70%] right-0 w-3/5 aspect-square z-10">
+              {/* Small image - front layer, overlapping the large image */}
+              <div className="absolute bottom-0 right-0 w-2/5 aspect-square z-10">
                 <Image
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop"
                   alt="Photography work"
                   fill
-                  className="object-cover shadow-xl"
+                  className="object-cover rounded-lg shadow-xl"
                 />
               </div>
             </motion.div>
@@ -143,6 +145,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* Company Logos Section */}
       <section className="py-12 bg-gray-50 dark:bg-dark-bgSecondary">
