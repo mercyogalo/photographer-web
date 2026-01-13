@@ -80,7 +80,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative h-96 rounded-lg overflow-hidden group cursor-pointer"
+                className="relative h-96 overflow-hidden group cursor-pointer"
               >
                 <Image
                   src={service.image}
@@ -124,7 +124,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white dark:bg-dark-bgSecondary rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-white dark:bg-dark-bgSecondary overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   {/* Video Side */}

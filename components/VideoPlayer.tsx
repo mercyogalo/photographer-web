@@ -49,7 +49,7 @@ export default function VideoPlayer({
         loop={loop}
         muted={muted}
         playsInline
-        className="w-full h-full object-cover rounded-lg"
+        className="w-full h-full object-cover"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onError={() => {
@@ -62,7 +62,7 @@ export default function VideoPlayer({
         initial={{ opacity: 0 }}
         animate={{ opacity: showControls || !isPlaying ? 1 : 0 }}
         transition={{ duration: 0.2 }}
-        className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-lg"
+        className="absolute inset-0 flex items-center justify-center bg-black/20"
       >
         <button
           onClick={togglePlay}

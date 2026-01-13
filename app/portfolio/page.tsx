@@ -94,7 +94,7 @@ export default function PortfolioPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   whileHover={{ y: -8 }}
-                  className="relative aspect-[3/4] rounded-lg overflow-hidden group cursor-pointer"
+                  className="relative aspect-[3/4] overflow-hidden group cursor-pointer"
                 >
                   <Image
                     src={image.url}

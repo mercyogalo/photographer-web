@@ -58,7 +58,7 @@ export default function AboutPage() {
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=1000&fit=crop"
                   alt="Photographer"
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-cover"
                 />
                 {/* Decorative Border - Top and Left */}
                 <div className="absolute top-0 left-0 w-1/2 h-1/2 border-t-4 border-l-4 border-primary rounded-tl-lg" />

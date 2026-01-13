@@ -245,11 +245,7 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-
-              {/* Google Map Placeholder */}
-              <div className="mt-8 h-64 bg-gray-200 dark:bg-gray-800 rounded-lg flex items-center justify-center">
-                <p className="text-gray-500 dark:text-gray-400">Google Map</p>
-              </div>
+              
             </motion.div>
           </div>
         </div>
