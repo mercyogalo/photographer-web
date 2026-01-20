@@ -8,13 +8,14 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import VideoPlayer from "@/components/VideoPlayer";
 import Button from "@/components/ui/Button";
 import HeroNavbar from "@/components/HeroNavbar";
-import { SERVICES, COMPANY_LOGOS, PORTFOLIO_IMAGES } from "@/lib/constants";
+import { SERVICES, COMPANY_LOGOS, PORTFOLIO_IMAGES, BEST_SHOTS } from "@/lib/constants";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
   const portfolioImages = PORTFOLIO_IMAGES.slice(0, 10);
+  const bestShotsImages = BEST_SHOTS;
 
   // Hero images for slideshow
   const heroImages = [
@@ -32,21 +33,22 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
-  // Auto-scroll carousel
+  // Auto-scroll carousel for best shots
+  const maxBestShotsSlides = Math.max(0, bestShotsImages.length - 3);
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % (portfolioImages.length - 2));
+      setCurrentSlide((prev) => (prev + 1) % (maxBestShotsSlides + 1));
     }, 3000);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, portfolioImages.length]);
+  }, [isAutoPlaying, maxBestShotsSlides]);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % (portfolioImages.length - 2));
+    setCurrentSlide((prev) => (prev + 1) % (maxBestShotsSlides + 1));
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + portfolioImages.length - 2) % (portfolioImages.length - 2));
+    setCurrentSlide((prev) => (prev - 1 + maxBestShotsSlides + 1) % (maxBestShotsSlides + 1));
   };
 
   return (
@@ -212,7 +214,7 @@ export default function Home() {
               className="lg:col-span-3 relative h-96 lg:h-auto"
             >
               <Image
-                src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=800&fit=crop"
+                src="/images/Bestshots/bestshot7.jpg"
                 alt="Best Shots"
                 fill
                 className="object-cover"
@@ -237,7 +239,7 @@ export default function Home() {
                   onMouseEnter={() => setIsAutoPlaying(false)}
                   onMouseLeave={() => setIsAutoPlaying(true)}
                 >
-                  {portfolioImages.map((image, index) => (
+                  {bestShotsImages.map((image, index) => (
                     <div key={image.id} className="w-1/3 flex-shrink-0 px-2">
                       <div className="relative aspect-[3/4] overflow-hidden group">
                         <Image
@@ -318,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* Video Showcase Section */}
-      <section className="py-20 md:py-32 bg-white dark:bg-dark-bg relative">
+      <section className="py-10 md:py-32 bg-white dark:bg-dark-bg relative">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&h=1080&fit=crop"
@@ -335,11 +337,11 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="lg:col-span-1"
+              className="lg:col-span-1 flex justify-center items-center"
             >
-              <div className="relative aspect-video overflow-hidden">
+              <div className="relative aspect-[3/4] w-full max-w-sm overflow-hidden">
                 <VideoPlayer
-                  src="/videos/showcase-video.mp4"
+                  src="/videos/homepageBlog/blog1.mp4"
                   className="w-full h-full"
                 />
               </div>
@@ -362,7 +364,7 @@ export default function Home() {
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
                 From intimate portraits to grand celebrations, we capture the essence of every moment with precision and artistry.
               </p>
-              <Button href="/portfolio">See More</Button>
+              <Button href="/services#blog">See More</Button>
             </motion.div>
           </div>
         </div>

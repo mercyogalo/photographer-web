@@ -54,6 +54,15 @@ export const PORTFOLIO_CATEGORIES = [
   "Events",
 ];
 
+export const BEST_SHOTS = [
+  { id: 1, url: "/images/Bestshots/bestshot1.jpg", title: "Best Shot 1" },
+  { id: 2, url: "/images/Bestshots/bestshot2.jpg", title: "Best Shot 2" },
+  { id: 3, url: "/images/Bestshots/bestshot3.jpg", title: "Best Shot 3" },
+  { id: 4, url: "/images/Bestshots/bestshot5.jpg", title: "Best Shot 5" },
+  { id: 5, url: "/images/Bestshots/bestshot7.jpg", title: "Best Shot 7" },
+  { id: 6, url: "/images/Bestshots/bestshot8.jpg", title: "Best Shot 8" },
+];
+
 export const PORTFOLIO_IMAGES = [
   { id: 1, category: "Portrait", url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=1600&fit=crop", title: "Portrait Session" },
   { id: 2, category: "Fashion", url: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=1600&fit=crop", title: "Fashion Editorial" },
