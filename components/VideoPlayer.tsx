@@ -30,6 +30,7 @@ export default function VideoPlayer({
       if (isPlaying) {
         videoRef.current.pause();
       } else {
+        videoRef.current.muted = false;
         videoRef.current.play();
       }
       setIsPlaying(!isPlaying);

@@ -13,25 +13,25 @@ export default function ServicesPage() {
       id: 1,
       title: "Wedding Photography Tips",
       description: "Learn the secrets to capturing perfect wedding moments with our expert tips and techniques.",
-      videoSrc: "/videos/blog-1.mp4",
+      videoSrc: "/videos/Blog/blog1.mp4",
     },
     {
       id: 2,
       title: "Portrait Lighting Masterclass",
       description: "Master the art of portrait lighting and create stunning professional portraits every time.",
-      videoSrc: "/videos/blog-2.mp4",
+      videoSrc: "/videos/Blog/blog2.mp4",
     },
     {
       id: 3,
       title: "Event Photography Essentials",
       description: "Discover the essential equipment and techniques for successful event photography.",
-      videoSrc: "/videos/blog-3.mp4",
+      videoSrc: "/videos/Blog/blog3.mp4",
     },
     {
       id: 4,
       title: "Editing Workflow Guide",
       description: "Streamline your editing process with our comprehensive workflow guide and best practices.",
-      videoSrc: "/videos/blog-4.mp4",
+      videoSrc: "/videos/Blog/blog4.mp4",
     },
   ];
 
@@ -128,7 +128,7 @@ export default function ServicesPage() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   {/* Video Side */}
-                  <div className="relative aspect-video md:aspect-auto">
+                  <div className="relative aspect-[9/16] md:aspect-[9/16] lg:aspect-auto">
                     <VideoPlayer
                       src={blog.videoSrc}
                       className="w-full h-full"
