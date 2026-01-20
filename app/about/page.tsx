@@ -53,7 +53,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="relative aspect-[4/5]">
+              <div className="relative w-3/4 aspect-[4/5] mx-auto">
                 <Image
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=1000&fit=crop"
                   alt="Photographer"
@@ -110,7 +110,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((testimonial, index) => (
+            {TESTIMONIALS.slice(0, 3).map((testimonial, index) => (
               <Testimonial
                 key={testimonial.id}
                 quote={testimonial.quote}

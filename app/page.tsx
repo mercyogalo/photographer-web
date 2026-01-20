@@ -13,7 +13,24 @@ import { SERVICES, COMPANY_LOGOS, PORTFOLIO_IMAGES } from "@/lib/constants";
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [currentHeroImage, setCurrentHeroImage] = useState(0);
   const portfolioImages = PORTFOLIO_IMAGES.slice(0, 10);
+
+  // Hero images for slideshow
+  const heroImages = [
+    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&h=1080&fit=crop",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=1080&fit=crop",
+    "https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&h=1080&fit=crop",
+    "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&h=1080&fit=crop",
+  ];
+
+  // Auto-scroll hero images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHeroImage((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   // Auto-scroll carousel
   useEffect(() => {
@@ -38,13 +55,22 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <HeroNavbar />
         <div className="absolute inset-0 z-0">
-          <VideoPlayer
-            src="/videos/hero-video.mp4"
-            autoplay
-            loop
-            muted
-            className="w-full h-full"
-          />
+          {heroImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentHeroImage ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <Image
+                src={image}
+                alt={`Hero ${index + 1}`}
+                fill
+                className="object-cover"
+                priority={index === 0}
+              />
+            </div>
+          ))}
         </div>
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="relative z-20 text-center text-white px-4">
