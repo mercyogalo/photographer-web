@@ -8,7 +8,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import VideoPlayer from "@/components/VideoPlayer";
 import Button from "@/components/ui/Button";
 import HeroNavbar from "@/components/HeroNavbar";
-import { SERVICES, COMPANY_LOGOS, PORTFOLIO_IMAGES, BEST_SHOTS } from "@/lib/constants";
+import { SERVICES, PORTFOLIO_IMAGES, BEST_SHOTS } from "@/lib/constants";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -105,43 +105,45 @@ export default function Home() {
 
    
 {/* About Section */}
-<section className="py-20 md:py-32 bg-white dark:bg-dark-bg">
+<section className="py-15 md:py-20 bg-white dark:bg-dark-bg">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Images */}
+      
+      {/* Left Column - Images */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative h-[500px]"
+              className="relative h-[600px]"
             >
-              {/* Large image - back layer */}
-              <div className="absolute top-0 left-0 w-3/5 aspect-[4/5] z-0">
+              {/* Large image - left side */}
+              <div className="absolute top-0 left-0 w-[350px] h-[500px] z-0">
                 <Image
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop"
                   alt="Photographer"
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-cover"
                 />
               </div>
               
-              {/* Tag positioned with spacing from both images */}
-              <div className="absolute top-[42%] left-[50%] bg-primary text-white p-4 rounded-lg shadow-lg z-20">
-                <div className="text-3xl font-bold">100+</div>
-                <div className="text-sm">Top Projects Done</div>
+              {/* Tag positioned on the right side of large image, on top of second image */}
+              <div className="absolute top-[200px] left-[370px] bg-primary text-white p-3 shadow-lg z-20">
+                <div className="text-2xl font-bold">100+</div>
+                <div className="text-xs">Top Projects Done</div>
               </div>
               
-              {/* Small image - front layer, overlapping the large image */}
-              <div className="absolute bottom-0 right-0 w-2/5 aspect-square z-10">
+              {/* Second image - layered from center of large image, bottom right */}
+              <div className="absolute top-[250px] left-[175px] w-[280px] h-[350px] z-10">
                 <Image
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop"
                   alt="Photography work"
                   fill
-                  className="object-cover rounded-lg shadow-xl"
+                  className="object-cover shadow-xl"
                 />
               </div>
             </motion.div>
+
 
             {/* Right Column - Content */}
             <motion.div
@@ -174,32 +176,6 @@ export default function Home() {
         </div>
       </section>
 
-
-      {/* Company Logos Section */}
-      <section className="py-12 bg-gray-50 dark:bg-dark-bgSecondary">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-            {COMPANY_LOGOS.map((logo, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
-              >
-                <Image
-                  src={logo}
-                  alt={`Company ${index + 1}`}
-                  width={150}
-                  height={80}
-                  className="object-contain"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Best Shots Section */}
       <section className="py-20 md:py-32 bg-white dark:bg-dark-bg">
@@ -248,9 +224,6 @@ export default function Home() {
                           fill
                           className="object-cover image-zoom"
                         />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <p className="text-white font-semibold">{image.title}</p>
-                        </div>
                       </div>
                     </div>
                   ))}

@@ -11,37 +11,37 @@ export const SERVICES = [
     id: 1,
     title: "Wedding Photography",
     description: "Capture your special day with beautiful, timeless wedding photography that tells your unique love story.",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop",
+    image: "/images/Services/wedding-service.jpg",
   },
   {
     id: 2,
     title: "Portrait Photography",
     description: "Professional portrait sessions that showcase your personality and create stunning images for any occasion.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop",
+    image: "/images/Services/potrait-service.jpg",
   },
   {
     id: 3,
     title: "Event Photography",
     description: "Document your corporate events, parties, and celebrations with professional event photography services.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=800&fit=crop",
+    image: "/images/Services/event-service.jpg",
   },
   {
     id: 4,
     title: "Commercial Photography",
     description: "High-quality commercial photography for brands, products, and marketing campaigns that stand out.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=800&fit=crop",
+    image: "/images/Services/commercial-service.jpg",
   },
   {
     id: 5,
     title: "Fashion Photography",
     description: "Stylish fashion photography that brings your designs and style to life with creative vision.",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=800&fit=crop",
+    image: "/images/Services/fashion-service.jpg",
   },
   {
     id: 6,
     title: "Product Photography",
     description: "Professional product photography that highlights features and creates compelling visual content.",
-    image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=800&fit=crop",
+    image: "/images/Services/product-service.jpg",
   },
 ];
 
