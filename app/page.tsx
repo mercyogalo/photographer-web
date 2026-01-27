@@ -13,25 +13,11 @@ import { SERVICES, PORTFOLIO_IMAGES, BEST_SHOTS } from "@/lib/constants";
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [currentHeroImage, setCurrentHeroImage] = useState(0);
   const portfolioImages = PORTFOLIO_IMAGES.slice(0, 10);
   const bestShotsImages = BEST_SHOTS;
 
-  // Hero images for slideshow
-  const heroImages = [
-    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&h=1080&fit=crop",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=1080&fit=crop",
-    "https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&h=1080&fit=crop",
-    "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&h=1080&fit=crop",
-  ];
 
-  // Auto-scroll hero images
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentHeroImage((prev) => (prev + 1) % heroImages.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
+
 
   // Auto-scroll carousel for best shots
   const maxBestShotsSlides = Math.max(0, bestShotsImages.length - 3);
@@ -53,132 +39,115 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <HeroNavbar />
-        <div className="absolute inset-0 z-0">
-          {heroImages.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentHeroImage ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              <Image
-                src={image}
-                alt={`Hero ${index + 1}`}
-                fill
-                className="object-cover"
-                priority={index === 0}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="absolute inset-0 bg-black/50 z-10" />
-        <div className="relative z-20 text-center text-white px-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6"
-          >
-            Capturing Moments That Last Forever
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto"
-          >
-            Professional photography services for weddings, events, portraits, and more
-          </motion.p>
-        </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
-        >
-         
-        </motion.div>
-      </section>
+     
+    {/* Hero Section */}
+<section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+  <HeroNavbar />
+  
+ {/* Blurred background layer */}
+<div className="absolute inset-0 z-0">
+  <Image
+    src='/images/Global/personal-image1.jpeg'
+    alt="Hero Background Blur"
+    fill
+    className="object-cover object-center scale-110"
+    priority
+  />
+</div>
 
+{/* Gradient overlay for seamless blending */}
+<div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 z-10" />
+
+<div className="relative z-20 text-center text-white px-4">
+  <motion.h1
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-brown drop-shadow-2xl"
+  >
+    Capturing Moments That Last Forever
+  </motion.h1>
+  <motion.p
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.2 }}
+    className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto drop-shadow-lg"
+  >
+    Professional photography services for weddings, events, portraits, and more
+  </motion.p>
+</div>
+
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1, delay: 0.5 }}
+  className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+>
+  {/* Add scroll indicator or CTA button here if needed */}
+</motion.div>
+</section>
    
+
 {/* About Section */}
-<section className="py-15 md:py-20 bg-white dark:bg-dark-bg">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<section className="py-15 md:py-20 bg-gray-900">
+  <div className="container-custom">
+    <div className="relative max-w-6xl mx-auto">
       
-      {/* Left Column - Images */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative h-[600px]"
-            >
-              {/* Large image - left side */}
-              <div className="absolute top-0 left-0 w-[350px] h-[500px] z-0">
-                <Image
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop"
-                  alt="Photographer"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              
-              {/* Tag positioned on the right side of large image, on top of second image */}
-              <div className="absolute top-[200px] left-[370px] bg-primary text-white p-3 shadow-lg z-20">
-                <div className="text-2xl font-bold">100+</div>
-                <div className="text-xs">Top Projects Done</div>
-              </div>
-              
-              {/* Second image - layered from center of large image, bottom right */}
-              <div className="absolute top-[250px] left-[175px] w-[280px] h-[350px] z-10">
-                <Image
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop"
-                  alt="Photography work"
-                  fill
-                  className="object-cover shadow-xl"
-                />
-              </div>
-            </motion.div>
-
-
-            {/* Right Column - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="text-sm uppercase tracking-wider text-primary font-semibold mb-4">
-                FEEL THE LENSE
-              </p>
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-                Make your photos stand out from the rest
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-              </p>
-              <Button href="/about">Discover More</Button>
-            </motion.div>
+      {/* Main container with overlap effect */}
+      <div className="relative">
+        
+        {/* Left side - Image */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative z-10 w-full md:w-1/2"
+        >
+          <div className="relative h-[400px] md:h-[500px]">
+            <Image
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop"
+              alt="Photographer"
+              fill
+              className="object-cover shadow-2xl"
+            />
           </div>
-        </div>
-      </section>
+        </motion.div>
+
+        {/* Right side - White content box overlapping image */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-white p-8 md:p-12 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:w-[55%] shadow-2xl mt-8 md:mt-0"
+        >
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-black uppercase tracking-wide">
+            ABOUT US
+          </h2>
+          <p className="text-gray-700 mb-4 leading-relaxed">
+            What a range unnamed that requires about Ipsum ipsam wh in reprehen It in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+          </p>
+          <p className="text-gray-700 mb-6 leading-relaxed">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections and contains the plus ultra sections progress and efforts.
+          </p>
+          
+          {/* Three dots indicator */}
+          <div className="flex gap-2 mt-8">
+            <div className="w-3 h-3 rounded-full bg-black"></div>
+            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+          </div>
+        </motion.div>
+        
+      </div>
+    </div>
+  </div>
+</section>
 
 
       {/* Best Shots Section */}
-      <section className="py-20 md:py-32 bg-white dark:bg-dark-bg">
+      <section className="py-20 md:py-32 bg-black">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Left Side - col-3 */}
@@ -196,8 +165,8 @@ export default function Home() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-8 text-white">
-                <h3 className="text-3xl font-heading font-bold mb-4">Best Shots</h3>
-                <p className="text-center mb-6 text-gray-200">
+                <h3 className="text-3xl font-heading font-bold mb-4 text-brown">Best Shots</h3>
+                <p className="text-center mb-6 text-white">
                   Explore our curated collection of stunning photography work
                 </p>
                 <Button href="/portfolio" variant="secondary">
@@ -231,17 +200,17 @@ export default function Home() {
               </div>
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-900 transition-colors"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/90 p-2 rounded-full shadow-lg hover:bg-black transition-colors"
                 aria-label="Previous"
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="w-5 h-5 text-white" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-900 transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/90 p-2 rounded-full shadow-lg hover:bg-black transition-colors"
                 aria-label="Next"
               >
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 text-white" />
               </button>
             </div>
           </div>
@@ -249,57 +218,61 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 md:py-32 bg-gray-50 dark:bg-dark-bgSecondary">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
-              Our Services
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Professional photography services tailored to your needs
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.slice(0, 3).map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative h-96 overflow-hidden group cursor-pointer"
-              >
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover image-zoom"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-2xl font-heading font-bold mb-2">{service.title}</h3>
-                  <p className="text-gray-200">{service.description}</p>
-                </div>
-              </motion.div>
-            ))}
+<section className="py-20 md:py-32 bg-black">
+  <div className="container-custom">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
+        Our Services
+      </h2>
+      <p className="text-white max-w-2xl mx-auto">
+        Professional photography services tailored to your needs
+      </p>
+    </motion.div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+      {SERVICES.slice(0, 4).map((service, index) => (
+        <motion.div
+          key={service.id}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className={`relative h-96 overflow-hidden group cursor-pointer ${
+            index % 2 === 1 ? 'md:mt-10' : ''
+          }`}
+        >
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            className="object-cover image-zoom"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <h3 className="text-2xl font-heading font-bold mb-2 text-brown">
+              {service.title}
+            </h3>
+            <p className="text-white">{service.description}</p>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Video Showcase Section */}
-      <section className="py-10 md:py-32 bg-white dark:bg-dark-bg relative">
+      <section className="py-10 md:py-32 bg-grey-200 relative">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&h=1080&fit=crop"
+            src="/images/Global/video-section-image.jpg"
             alt="Background"
             fill
-            className="object-cover opacity-10"
+            className="object-cover opacity-95"
           />
         </div>
         <div className="container-custom relative z-10">
@@ -328,13 +301,13 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-1"
             >
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-brown">
                 Behind the Lens
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              <p className="text-white mb-4 leading-relaxed">
                 Experience the artistry and passion that goes into every photograph. Our team combines technical expertise with creative vision to deliver stunning results.
               </p>
-              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+              <p className="text-white mb-8 leading-relaxed">
                 From intimate portraits to grand celebrations, we capture the essence of every moment with precision and artistry.
               </p>
               <Button href="/services#blog">See More</Button>
@@ -344,7 +317,7 @@ export default function Home() {
       </section>
 
       {/* Portfolio Preview Section */}
-      <section className="py-20 md:py-32 bg-gray-50 dark:bg-dark-bgSecondary overflow-hidden">
+      <section className="py-20 md:py-32 bg-black overflow-hidden">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -353,10 +326,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
               Portfolio Preview
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-white">
               A glimpse of our recent work
             </p>
           </motion.div>

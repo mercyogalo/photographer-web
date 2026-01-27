@@ -18,20 +18,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
-    const initialTheme = getThemePreference();
-    setTheme(initialTheme);
+    // Always set to dark (black background)
+    setTheme("dark");
     document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(initialTheme);
-    document.body.className = initialTheme;
+    document.documentElement.classList.add("dark");
+    document.body.className = "dark";
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    setThemePreference(newTheme);
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(newTheme);
-    document.body.className = newTheme;
+    // Theme toggle disabled - always dark mode
+    // Keeping function for compatibility but no-op
   };
 
   // Always provide the context, even before mounting

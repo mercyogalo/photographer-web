@@ -18,23 +18,17 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #000000;
 }
 
 body {
   font-family: var(--font-inter);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  background-color: #000000;
+  color: #FFFFFF;
 }
 
-/* Light Mode */
-body.light {
-  background-color: #FFFFFF;
-  color: #111827;
-}
-
-/* Dark Mode */
-body.dark {
-  background-color: #0F172A;
-  color: #F1F5F9;
+main {
+  background-color: #131214;
 }
 
 /* Smooth scrollbar */
@@ -47,12 +41,12 @@ body.dark {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D97706;
+  background: #737373;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B45309;
+  background: #525252;
 }
 
 /* Custom utilities */

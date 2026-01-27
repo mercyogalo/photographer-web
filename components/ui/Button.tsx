@@ -24,13 +24,13 @@ export default function Button({
   disabled = false,
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center px-8 py-3 text-sm font-semibold transition-all duration-200 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center px-8 py-3 text-sm font-semibold transition-all duration-200 rounded focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
   
   const variants = {
     primary:
-      "bg-primary text-white hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-lg",
+      "bg-white text-black hover:bg-gray-200 hover:-translate-y-0.5 hover:shadow-lg",
     secondary:
-      "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white",
+      "border-2 border-white text-white bg-transparent hover:bg-white hover:text-black",
   };
 
   const buttonClasses = cn(baseStyles, variants[variant], className);

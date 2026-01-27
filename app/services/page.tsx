@@ -42,19 +42,19 @@ export default function ServicesPage() {
         <HeroNavbar />
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&h=1080&fit=crop"
+            src="/images/Hero/hero-3.jpg"
             alt="Services"
             fill
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </div>
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-gray-900/60 z-10" />
         <div className="relative z-20 text-center text-white px-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-brown"
           >
             Our Services
           </motion.h1>
@@ -70,7 +70,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 md:py-32 bg-white dark:bg-dark-bg">
+      <section className="py-20 md:py-32 bg-black">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {SERVICES.map((service, index) => (
@@ -90,8 +90,8 @@ export default function ServicesPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-2xl font-heading font-bold mb-2">{service.title}</h3>
-                  <p className="text-gray-200">{service.description}</p>
+                  <h3 className="text-2xl font-heading font-bold mb-2 text-brown">{service.title}</h3>
+                  <p className="text-white">{service.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -100,7 +100,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Blog/Videos Section */}
-      <section id="blog" className="py-20 md:py-32 bg-gray-50 dark:bg-dark-bgSecondary">
+      <section id="blog" className="py-20 md:py-32 bg-black">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -109,10 +109,10 @@ export default function ServicesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
               Blog
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-white max-w-2xl mx-auto">
               Tips, tutorials, and insights from our photography experts
             </p>
           </motion.div>
@@ -124,7 +124,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white dark:bg-dark-bgSecondary overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-black overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   {/* Video Side */}
@@ -136,15 +136,15 @@ export default function ServicesPage() {
                   </div>
                   {/* Text Side */}
                   <div className="p-6 flex flex-col justify-center">
-                    <h3 className="text-2xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">
+                    <h3 className="text-2xl font-heading font-bold mb-3 text-brown">
                       {blog.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    <p className="text-white mb-4 leading-relaxed">
                       {blog.description}
                     </p>
                     <Link
                       href="#"
-                      className="text-primary font-semibold hover:underline inline-flex items-center gap-2"
+                      className="text-white font-semibold hover:underline inline-flex items-center gap-2"
                     >
                       Read More
                       <span>→</span>

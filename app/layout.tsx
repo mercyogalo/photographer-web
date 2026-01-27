@@ -41,7 +41,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${montserrat.variable} ${playfair.variable}`}>
         <ThemeProvider>
-          <main className="min-h-screen">
+          <main className="min-h-screen bg-black">
             {children}
           </main>
           <Footer />

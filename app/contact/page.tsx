@@ -74,16 +74,16 @@ export default function ContactPage() {
             src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&h=1080&fit=crop"
             alt="Contact"
             fill
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </div>
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-gray-900/60 z-10" />
         <div className="relative z-20 text-center text-white px-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-brown"
           >
             Get In Touch
           </motion.h1>
@@ -99,7 +99,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 md:py-32 bg-white dark:bg-dark-bg">
+      <section className="py-20 md:py-32 bg-black">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Side - Contact Form */}
@@ -109,7 +109,7 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-brown">
                 Send us a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -158,12 +158,12 @@ export default function ContactPage() {
                   required
                 />
                 {submitStatus === "success" && (
-                  <div className="p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-md">
+                  <div className="p-4 bg-gray-800 text-white rounded-md">
                     Thank you! Your message has been sent successfully.
                   </div>
                 )}
                 {submitStatus === "error" && (
-                  <div className="p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-md">
+                  <div className="p-4 bg-gray-800 text-white rounded-md">
                     Something went wrong. Please try again.
                   </div>
                 )}
@@ -180,64 +180,64 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-brown">
                 Contact Information
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <MapPin className="w-6 h-6 text-primary" />
+                  <div className="p-3 bg-gray-800 rounded-lg">
+                    <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                    <h3 className="font-semibold text-white mb-1">
                       Address
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-white">
                       New York, NY, United States
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Phone className="w-6 h-6 text-primary" />
+                  <div className="p-3 bg-gray-800 rounded-lg">
+                    <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                    <h3 className="font-semibold text-white mb-1">
                       Phone
                     </h3>
                     <a
                       href="tel:+1234567890"
-                      className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+                      className="text-white hover:text-gray-400 transition-colors"
                     >
                       +123 456 7890
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Mail className="w-6 h-6 text-primary" />
+                  <div className="p-3 bg-gray-800 rounded-lg">
+                    <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                    <h3 className="font-semibold text-white mb-1">
                       Email
                     </h3>
                     <a
                       href="mailto:info@photographer.com"
-                      className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+                      className="text-white hover:text-gray-400 transition-colors"
                     >
                       info@photographer.com
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Clock className="w-6 h-6 text-primary" />
+                  <div className="p-3 bg-gray-800 rounded-lg">
+                    <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                    <h3 className="font-semibold text-white mb-1">
                       Working Hours
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-white">
                       Mon-Fri: 9AM-6PM<br />
                       Sat: 10AM-4PM<br />
                       Sun: Closed
@@ -252,7 +252,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQs Section */}
-      <section className="py-20 md:py-32 bg-gray-50 dark:bg-dark-bgSecondary">
+      <section className="py-20 md:py-32 bg-black">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Column - Heading */}
@@ -263,10 +263,10 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
               className="lg:sticky lg:top-24 h-fit"
             >
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
                 Frequently Asked Questions
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+              <p className="text-white text-lg leading-relaxed">
                 Find answers to common questions about our photography services, booking process, and more.
               </p>
             </motion.div>

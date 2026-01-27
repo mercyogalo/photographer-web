@@ -10,30 +10,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        brown: {
+          DEFAULT: "#8B4513", // Saddle Brown
+          50: "#F5E6D3",
+          100: "#E8D4B8",
+          200: "#D4B896",
+          300: "#C19A6B",
+          400: "#A67C52",
+          500: "#8B4513",
+          600: "#6B3410",
+          700: "#4A240B",
+          800: "#2A1506",
+          900: "#0A0502",
+        },
         primary: {
-          DEFAULT: "#D97706", // Amber/Golden
-          50: "#FFFBEB",
-          100: "#FEF3C7",
-          200: "#FDE68A",
-          300: "#FCD34D",
-          400: "#FBBF24",
-          500: "#D97706",
-          600: "#B45309",
-          700: "#92400E",
-          800: "#78350F",
-          900: "#451A03",
+          DEFAULT: "#FFFFFF", // White
+          50: "#FFFFFF",
+          100: "#F5F5F5",
+          200: "#E5E5E5",
+          300: "#D4D4D4",
+          400: "#A3A3A3",
+          500: "#737373",
+          600: "#525252",
+          700: "#404040",
+          800: "#262626",
+          900: "#171717",
         },
         light: {
           bg: "#FFFFFF",
-          bgSecondary: "#F9FAFB",
-          text: "#111827",
-          textSecondary: "#6B7280",
+          bgSecondary: "#FFFFFF",
+          text: "#000000",
+          textSecondary: "#000000",
         },
         dark: {
-          bg: "#0F172A",
-          bgSecondary: "#1E293B",
-          text: "#F1F5F9",
-          textSecondary: "#CBD5E1",
+          bg: "#000000",
+          bgSecondary: "#1A1A1A",
+          text: "#FFFFFF",
+          textSecondary: "#E5E5E5",
         },
       },
       fontFamily: {

@@ -24,16 +24,16 @@ export default function PortfolioPage() {
             src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&h=1080&fit=crop"
             alt="Portfolio"
             fill
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </div>
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-gray-900/60 z-10" />
         <div className="relative z-20 text-center text-white px-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-brown"
           >
             Our Portfolio
           </motion.h1>
@@ -49,7 +49,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-12 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-800">
+      <section className="py-12 bg-black border-b border-white">
         <div className="container-custom">
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {PORTFOLIO_CATEGORIES.map((category) => (
@@ -58,15 +58,15 @@ export default function PortfolioPage() {
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-2 text-sm font-semibold transition-all duration-200 relative ${
                   activeCategory === category
-                    ? "text-primary"
-                    : "text-gray-600 dark:text-gray-400 hover:text-primary"
+                    ? "text-white"
+                    : "text-white hover:text-gray-400"
                 }`}
               >
                 {category}
                 {activeCategory === category && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
                   />
                 )}
               </button>
@@ -76,7 +76,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-20 md:py-32 bg-white dark:bg-dark-bg">
+      <section className="py-20 md:py-32 bg-black">
         <div className="container-custom">
           <AnimatePresence mode="wait">
             <motion.div
@@ -107,7 +107,7 @@ export default function PortfolioPage() {
                     <h3 className="text-white font-semibold text-lg mb-2 text-center">
                       {image.title}
                     </h3>
-                    <p className="text-gray-200 text-sm">{image.category}</p>
+                    <p className="text-white text-sm">{image.category}</p>
                   </div>
                 </motion.div>
               ))}
