@@ -10,14 +10,105 @@ import Button from "@/components/ui/Button";
 import HeroNavbar from "@/components/HeroNavbar";
 import { SERVICES, PORTFOLIO_IMAGES, BEST_SHOTS } from "@/lib/constants";
 
+// FR Monogram Logo Component
+function FRMonogramLogo() {
+  return (
+    <svg 
+      width="180" 
+      height="180" 
+      viewBox="0 0 200 200" 
+      xmlns="http://www.w3.org/2000/svg"
+      className="drop-shadow-2xl"
+    >
+      <defs>
+        <style>
+          {`
+            .logo-letter {
+              fill: none;
+              stroke: white;
+              stroke-width: 8;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+            .decorative-circle {
+              fill: none;
+              stroke: white;
+              opacity: 0.3;
+            }
+          `}
+        </style>
+      </defs>
+      
+      {/* Decorative circles */}
+      <circle cx="100" cy="100" r="85" className="decorative-circle" strokeWidth="0.5"/>
+      <circle cx="100" cy="100" r="90" className="decorative-circle" strokeWidth="0.3"/>
+      
+      {/* F Letter (left side) */}
+      <motion.path 
+        className="logo-letter" 
+        d="M 60 50 L 60 150 M 60 50 L 90 50 M 60 95 L 85 95"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.3 }}
+      />
+      
+      {/* R Letter (right side, mirrored) */}
+      <g transform="scale(-1, 1) translate(-200, 0)">
+        <motion.path 
+          className="logo-letter" 
+          d="M 60 50 L 60 150 M 60 50 L 85 50 Q 95 50 95 65 Q 95 80 85 80 L 60 80 M 75 80 L 95 150"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+        />
+      </g>
+    </svg>
+  );
+}
+
+// Hero Carousel Component
+function HeroCarousel({ images, interval = 4000 }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [images.length, interval]);
+
+  return (
+    <div className="relative w-full h-full overflow-hidden">
+      {images.map((image, index) => (
+        <motion.div
+          key={index}
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ 
+            opacity: index === currentIndex ? 1 : 0,
+          }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+        >
+          <Image
+            src={image}
+            alt={`Carousel image ${index + 1}`}
+            fill
+            className="object-cover"
+            priority={index === 0}
+            quality={90}
+          />
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const portfolioImages = PORTFOLIO_IMAGES.slice(0, 10);
   const bestShotsImages = BEST_SHOTS;
-
-
-
 
   // Auto-scroll carousel for best shots
   const maxBestShotsSlides = Math.max(0, bestShotsImages.length - 3);
@@ -40,52 +131,83 @@ export default function Home() {
   return (
     <div>
      
-    {/* Hero Section */}
-<section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-  <HeroNavbar />
-  
- {/* Blurred background layer */}
-<div className="absolute inset-0 z-0">
-  <Image
-    src='/images/Global/personal-image1.jpeg'
-    alt="Hero Background Blur"
-    fill
-    className="object-cover object-center scale-110"
-    priority
-  />
-</div>
+   
+    <section className="relative h-screen overflow-hidden bg-black">
+      <HeroNavbar />
 
-{/* Gradient overlay for seamless blending */}
-<div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 z-10" />
+       {/* Large Text Below Navbar */}
+      <div className="absolute top-16 md:top-20 left-0 right-0 z-40 bg-white py-6 md:py-8 lg:py-10">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <h1 
+            className="text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-normal text-black tracking-[0.1em]"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+          >
+            FULGENCE RABACH
+          </h1>
+        </div>
+      </div>
+      
+      {/* Grid container for two carousels */}
+      <div className="grid grid-cols-1 md:grid-cols-2 h-screen gap-0">
+        
+        {/* Left Carousel */}
+        <HeroCarousel 
+          images={[
+            'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80',
+            'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80',
+            'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80',
+            'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&q=80'
+          ]}
+          interval={4000}
+        />
+        
+        {/* Right Carousel */}
+        <HeroCarousel 
+          images={[
+            'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80',
+            'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&q=80',
+            'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80',
+            'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80'
+          ]}
+          interval={4500}
+        />
+      </div>
 
-<div className="relative z-20 text-center text-white px-4">
-  <motion.h1
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-brown drop-shadow-2xl"
-  >
-    Capturing Moments That Last Forever
-  </motion.h1>
-  <motion.p
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-    className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto drop-shadow-lg"
-  >
-    Professional photography services for weddings, events, portraits, and more
-  </motion.p>
-</div>
+      {/* Centered FR Logo Overlay */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+        >
+          <FRMonogramLogo />
+        </motion.div>
+      </div>
 
-<motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 1, delay: 0.5 }}
-  className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
->
-  {/* Add scroll indicator or CTA button here if needed */}
-</motion.div>
-</section>
+      {/* Tagline */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        className="absolute bottom-[20%] left-1/2 -translate-x-1/2 z-40 text-center px-4"
+      >
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-white tracking-[0.2em] drop-shadow-2xl">
+          Where Beauty Meets Love
+        </h1>
+      </motion.div>
+
+      {/* CTA Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, delay: 1 }}
+        className="absolute bottom-[10%] left-1/2 -translate-x-1/2 z-40 pointer-events-auto"
+      >
+        <Button href="#portfolio" variant="secondary">
+          EXPLORE OUR WORK
+        </Button>
+      </motion.div>
+    </section>
    
 
 {/* About Section */}
@@ -363,4 +485,3 @@ export default function Home() {
     </div>
   );
 }
-

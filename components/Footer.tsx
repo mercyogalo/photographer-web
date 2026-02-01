@@ -1,31 +1,50 @@
 import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
-import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
+  const midpoint = Math.ceil(NAV_LINKS.length / 2);
+  const leftLinks = NAV_LINKS.slice(0, midpoint);
+  const rightLinks = NAV_LINKS.slice(midpoint);
+
   return (
-    <footer className="bg-black text-white py-16">
+    <footer className="bg-black text-white pt-20">
       <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-12">
-          {/* Column 1: Logo & Description */}
-          <div>
-            <h3 className="text-2xl font-heading font-bold text-white mb-4">
-              PhotoStudio
-            </h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Capturing moments that last forever. Professional photography services for weddings, events, portraits, and more.
+
+        {/* Top Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+
+          {/* Left */}
+          <div className="space-y-8">
+            <div className="w-16 h-16 border border-white flex items-center justify-center text-xl font-serif">
+              D
+            </div>
+
+            <p className="text-gray-300 text-lg max-w-sm">
+              Refined and timeless imagery for modern day lovers.
             </p>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {NAV_LINKS.map((link) => (
+          {/* Right: Auto-generated Nav */}
+          <div className="grid grid-cols-2 gap-16 font-serif text-lg">
+            <ul className="space-y-4">
+              {leftLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                    className="hover:text-gray-400 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <ul className="space-y-4">
+              {rightLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="hover:text-gray-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -33,65 +52,24 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+        </div>
 
-          {/* Column 3: Contact */}
-          <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-gray-300">
-                <Mail className="w-4 h-4" />
-                <a href="mailto:info@photographer.com" className="hover:text-white transition-colors">
-                  info@photographer.com
-                </a>
-              </li>
-              <li className="flex items-center gap-2 text-gray-300">
-                <Phone className="w-4 h-4" />
-                <a href="tel:+1234567890" className="hover:text-white transition-colors">
-                  +123 456 7890
-                </a>
-              </li>
-              <li className="flex items-center gap-3 mt-4">
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </li>
-            </ul>
-          </div>
+        {/* Brand Text */}
+        <div className="overflow-hidden mb-16">
+          <h1
+            className="text-[18vw] leading-none whitespace-nowrap"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+          >
+          FULGENCE
+          </h1>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 pt-8 text-center">
-          <p className="text-gray-300 text-sm">
-            © {new Date().getFullYear()} PhotoStudio. All rights reserved.
-          </p>
+        <div className="flex flex-col md:flex-row justify-between pb-8 text-sm text-gray-500">
+          <p>© {new Date().getFullYear()} FULGENCE RABACH. ALL RIGHTS RESERVED.</p>
         </div>
+
       </div>
     </footer>
   );
 }
-

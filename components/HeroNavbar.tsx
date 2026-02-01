@@ -12,78 +12,116 @@ export default function HeroNavbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 w-full">
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-heading font-bold text-white hover:text-gray-300 transition-colors">
-            PhotoStudio
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative text-sm font-medium transition-colors duration-200 ${
-                  pathname === link.href
-                    ? "text-white"
-                    : "text-white hover:text-gray-300"
-                }`}
-              >
-                {link.label}
-                {pathname === link.href && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white"
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-4">
+    <>
+      {/* Navbar */}
+      <nav className="absolute top-0 left-0 right-0 z-50 w-full bg-white">
+        <div className="max-w-full px-6 lg:px-12">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Left - Hamburger Menu */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-white"
+              className="p-2 text-black hover:opacity-70 transition-opacity"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <Menu size={24} strokeWidth={1.5} />
             </button>
-          </div>
-        </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/90 backdrop-blur-md border-t border-white/20"
-          >
-            <div className="container-custom py-4 space-y-4">
+            {/* Center - Navigation Links */}
+            <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8 lg:gap-12">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block text-base font-medium transition-colors duration-200 ${
+                  className={`relative text-xs lg:text-sm font-normal uppercase tracking-[0.2em] transition-colors duration-200 ${
                     pathname === link.href
-                      ? "text-white"
-                      : "text-white hover:text-gray-300"
+                      ? "text-black"
+                      : "text-black/70 hover:text-black"
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
             </div>
-          </motion.div>
+
+            {/* Right - Contact Link (mobile) */}
+            <Link
+              href="/contact"
+              className="md:hidden text-xs uppercase tracking-widest text-black/70 hover:text-black transition-colors"
+            >
+              CONTACT
+            </Link>
+
+            {/* Right - Empty space for balance (desktop) */}
+            <div className="hidden md:block w-10"></div>
+          </div>
+        </div>
+
+        {/* Horizontal Line */}
+        <div className="w-full h-px bg-black/20"></div>
+      </nav>
+
+
+      {/* Full Page Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[60] bg-white"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            
+            {/* Menu Content */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[70] flex flex-col"
+            >
+              {/* Close Button */}
+              <div className="absolute top-4 left-4 md:top-6 md:left-6">
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 text-black hover:opacity-70 transition-opacity"
+                  aria-label="Close menu"
+                >
+                  <X size={24} strokeWidth={1.5} />
+                </button>
+              </div>
+
+              {/* Centered Menu Items */}
+              <div className="flex-1 flex flex-col items-center justify-center space-y-8 md:space-y-10 p-8">
+                {NAV_LINKS.map((link, index) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`text-3xl sm:text-4xl md:text-5xl font-light uppercase tracking-[0.15em] transition-colors duration-200 ${
+                        pathname === link.href
+                          ? "text-black"
+                          : "text-black/60 hover:text-black"
+                      }`}
+                      style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }
