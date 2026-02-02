@@ -14,10 +14,9 @@ export default function HeroNavbar() {
   return (
     <>
       {/* Navbar */}
-      <nav className="absolute top-0 left-0 right-0 z-50 w-full bg-white">
+      <nav className="absolute top-0 left-0 right-0 z-50 w-full bg-[#fafafa]">
         <div className="max-w-full px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Left - Hamburger Menu */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-black hover:opacity-70 transition-opacity"
@@ -26,7 +25,7 @@ export default function HeroNavbar() {
               <Menu size={24} strokeWidth={1.5} />
             </button>
 
-            {/* Center - Navigation Links */}
+        
             <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8 lg:gap-12">
               {NAV_LINKS.map((link) => (
                 <Link
@@ -43,7 +42,7 @@ export default function HeroNavbar() {
               ))}
             </div>
 
-            {/* Right - Contact Link (mobile) */}
+          
             <Link
               href="/contact"
               className="md:hidden text-xs uppercase tracking-widest text-black/70 hover:text-black transition-colors"
@@ -51,13 +50,13 @@ export default function HeroNavbar() {
               CONTACT
             </Link>
 
-            {/* Right - Empty space for balance (desktop) */}
+           
             <div className="hidden md:block w-10"></div>
           </div>
         </div>
 
         {/* Horizontal Line */}
-        <div className="w-full h-px bg-black/20"></div>
+        <div className="w-full h-px bg-black/10"></div>
       </nav>
 
 

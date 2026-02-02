@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import HeroNavbar from "@/components/HeroNavbar";
-import Testimonial from "@/components/Testimonial";
-import { TESTIMONIALS, SERVICES } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 
 export default function AboutPage() {
   return (
@@ -21,7 +20,7 @@ export default function AboutPage() {
           />
         </div>
         <div className="absolute inset-0 bg-gray-900/60 z-10" />
-        <div className="relative z-20 text-center text-white px-4">
+        <div className="relative z-20 text-center text-black px-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,7 +41,7 @@ export default function AboutPage() {
       </section>
 
       {/* About Content Section */}
-      <section className="py-20 md:py-32 bg-black">
+      <section className="py-20 md:py-32 bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Left Column - Image with Decorative Border */}
@@ -75,16 +74,16 @@ export default function AboutPage() {
               <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-brown">
                 Our Story
               </h2>
-              <p className="text-white mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 With over a decade of experience in professional photography, PhotoStudio has been dedicated to capturing life's most precious moments. Our journey began with a simple passion for storytelling through images, and has evolved into a full-service photography studio serving clients worldwide.
               </p>
-              <p className="text-white mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 We specialize in wedding photography, portrait sessions, corporate events, and commercial photography. Our team of skilled photographers combines technical expertise with creative vision to deliver stunning results that exceed expectations.
               </p>
-              <p className="text-white mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 What sets us apart is our commitment to understanding each client's unique vision. We take the time to listen, collaborate, and create images that truly reflect your personality, style, and the essence of your special moments.
               </p>
-              <p className="text-white leading-relaxed">
+              <p className="text-black leading-relaxed">
                 Every photograph we create is a work of art, carefully composed and edited to perfection. We believe that great photography is not just about capturing what you see, but about revealing the emotions, stories, and beauty that lie beneath the surface.
               </p>
             </motion.div>
@@ -94,7 +93,7 @@ export default function AboutPage() {
 
 
          {/* Services Section */}
-      <section className="py-20 md:py-32 bg-black">
+      <section className="py-20 md:py-32 bg-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -106,7 +105,7 @@ export default function AboutPage() {
             <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
               Our Services
             </h2>
-            <p className="text-white max-w-2xl mx-auto">
+            <p className="text-black max-w-2xl mx-auto">
               Professional photography services tailored to your needs
             </p>
           </motion.div>
@@ -129,7 +128,7 @@ export default function AboutPage() {
                   className="object-cover image-zoom"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-black">
                   <h3 className="text-2xl font-heading font-bold mb-2 text-brown">
                     {service.title}
                   </h3>
@@ -142,36 +141,7 @@ export default function AboutPage() {
       </section>
       
 
-      {/* Testimonials Section */}
-      <section className="py-20 md:py-32 bg-black">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
-              What Clients Say
-            </h2>
-            <p className="text-white max-w-2xl mx-auto">
-              Don't just take our word for it - hear from our satisfied clients
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TESTIMONIALS.slice(0, 3).map((testimonial, index) => (
-              <Testimonial
-                key={testimonial.id}
-                quote={testimonial.quote}
-                name={testimonial.name}
-                role={testimonial.role}
-                rating={testimonial.rating}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+    
     </div>
   );
 }

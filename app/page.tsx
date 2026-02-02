@@ -11,6 +11,8 @@ import Button from "@/components/ui/Button";
 import HeroNavbar from "@/components/HeroNavbar";
 import Logo from "@/components/Logo";
 import { PORTFOLIO_IMAGES, BEST_SHOTS, SERVICES } from "@/lib/constants";
+import ScrollCarousel from "@/components/Scrollcarousel";
+import Testimonials from "@/components/Testimonials";
 
 function HeroCarousel({ images, interval = 4000 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -211,7 +213,6 @@ export default function Home() {
       </section>
 
           <section className="py-20 md:py-32 bg-white">
-  <div className="container-custom">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {SERVICES.slice(0,3).map((service, index) => (
         <motion.div
@@ -231,7 +232,6 @@ export default function Home() {
         </motion.div>
       ))}
     </div>
-  </div>
 </section>
             
       <section className="bg-white py-20 text-center">
@@ -241,122 +241,123 @@ export default function Home() {
       </section>
 
 
-      {/* Best Shots Section */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-12 relative">
-              <div className="relative overflow-hidden">
-                <div
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
-                  onMouseEnter={() => setIsAutoPlaying(false)}
-                  onMouseLeave={() => setIsAutoPlaying(true)}
-                >
-                  {bestShotsImages.map((image, index) => (
-                    <div key={image.id} className="w-1/3 flex-shrink-0 px-2">
-                      <div className="relative aspect-[3/4] overflow-hidden group">
-                        <Image
-                          src={image.url}
-                          alt={image.title}
-                          fill
-                          className="object-cover image-zoom"
-                        />
-                      </div>
-                    </div>
-                  ))}
+   {/* Best Shots Section */}
+<section className="py-20 md:py-32 bg-white">
+  <div className="container-custom">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="lg:col-span-12 relative">
+        <div className="relative overflow-visible">
+          <div className="overflow-hidden mx-[-7.14%]">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(calc(-${currentSlide * 28.57}% + 7.14%))` }}
+              onMouseEnter={() => setIsAutoPlaying(false)}
+              onMouseLeave={() => setIsAutoPlaying(true)}
+            >
+              {bestShotsImages.map((image, index) => (
+                <div key={image.id} className="w-[28.57%] flex-shrink-0 px-2">
+                  <div className="relative aspect-[3/4] overflow-hidden group">
+                    <Image
+                      src={image.url}
+                      alt={image.title}
+                      fill
+                      className="object-cover image-zoom"
+                    />
+                  </div>
                 </div>
-              </div>
-              <button
-                onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/90 p-2 rounded-full shadow-lg hover:bg-black transition-colors"
-                aria-label="Previous"
-              >
-                <ArrowLeft className="w-5 h-5 text-white" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/90 p-2 rounded-full shadow-lg hover:bg-black transition-colors"
-                aria-label="Next"
-              >
-                <ArrowRight className="w-5 h-5 text-white" />
-              </button>
+              ))}
             </div>
           </div>
         </div>
-      </section>
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/90 p-2 rounded-full shadow-lg hover:bg-black transition-colors z-10"
+          aria-label="Previous"
+        >
+          <ArrowLeft className="w-5 h-5 text-white" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/90 p-2 rounded-full shadow-lg hover:bg-black transition-colors z-10"
+          aria-label="Next"
+        >
+          <ArrowRight className="w-5 h-5 text-white" />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
    
-      {/* Video Showcase Section */}
-      <section className="py-20 md:py-32 bg-grey-200 relative">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/Global/video-section-image.jpg"
-            alt="Background"
-            fill
-            className="object-cover opacity-95"
-          />
-        </div>
-        <div className="container-custom relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-center">
-            {/* Right Side - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-1"
-            >
-              <Button href="/about">EXPLORE MY SERVICES</Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Preview Section */}
-      <section className="py-20 md:py-32 bg-black overflow-hidden">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
-              Portfolio Preview
-            </h2>
-            <p className="text-white">
-              A glimpse of our recent work
-            </p>
-          </motion.div>
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-            {portfolioImages.map((image) => (
-              <motion.div
-                key={image.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="flex-shrink-0 w-80 h-96 relative overflow-hidden group"
-              >
-                <Image
-                  src={image.url}
-                  alt={image.title}
-                  fill
-                  className="object-cover image-zoom"
+     
+      <section className="lg:py-42 md:py-40 py-32 relative">
+  <div className="absolute inset-0 ">
+    <Image
+      src="/images/Global/video-section-image.jpg"
+      alt="Background"
+      fill
+      className="object-cover"
+    />
+  </div>
+  <div className="container-custom relative z-10">
+    <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-end min-h-[60vh]">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex justify-center items-center"
+      >
+        <a 
+          href="/about" 
+          className="flex items-center gap-3 text-white text-lg font-semibold tracking-wider uppercase hover:opacity-80 transition-opacity duration-300 group"
+        >
+          <span>EXPLORE MY SERVICES</span>
+           <ArrowRight
+                  className="w-4 h-4"
+                  style={{ transform: "rotate(-45deg)" }}
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <p className="text-white font-semibold text-lg">{image.title}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <div className="mt-12">
-            <Button href="/portfolio">Browse More</Button>
-          </div>
-        </div>
-      </section>
+        </a>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
+
+
+      <Testimonials />
+
+      <ScrollCarousel />
+
+
+
+             <section className="py-20 md:py-32 bg-black">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
+      {SERVICES.slice(0,4).map((service, index) => (
+        <motion.div
+          key={service.id}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="relative w-full h-[300px] md:h-[400px] sm:h-[300px] sm:mt-3 sm:w-full lg:h-[400px] overflow-hidden group"
+        >
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            className="object-cover image-zoom"
+          />
+        </motion.div>
+      ))}
+    </div>
+</section>
+
+
+
+
+
+
     </div>
   );
 }

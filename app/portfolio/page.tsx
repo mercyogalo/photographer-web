@@ -1,121 +1,111 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import HeroNavbar from "@/components/HeroNavbar";
-import { PORTFOLIO_CATEGORIES, PORTFOLIO_IMAGES } from "@/lib/constants";
+import { PORTFOLIO_IMAGES } from "@/lib/constants";
 
-export default function PortfolioPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+function ParallaxCard({
+  image,
+  speed,
+  fixedHeight,
+}: {
+  image: { id: string; url: string; title: string };
+  speed: number;
+  fixedHeight?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [orientation, setOrientation] = useState<"portrait" | "landscape">(
+    "portrait"
+  );
 
-  const filteredImages =
-    activeCategory === "All"
-      ? PORTFOLIO_IMAGES
-      : PORTFOLIO_IMAGES.filter((img) => img.category === activeCategory);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-60 * speed, 60 * speed]);
+
+  const aspectClass = fixedHeight
+    ? fixedHeight
+    : orientation === "portrait"
+    ? "aspect-[3/4]"
+    : "aspect-[4/3]";
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-        <HeroNavbar />
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&h=1080&fit=crop"
-            alt="Portfolio"
-            fill
-            className="object-cover grayscale"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gray-900/60 z-10" />
-        <div className="relative z-20 text-center text-white px-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-brown"
-          >
-            Our Portfolio
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl max-w-2xl mx-auto"
-          >
-            Explore our collection of stunning photography work
-          </motion.p>
-        </div>
+    <motion.div ref={ref} style={{ y }} className="w-full">
+      <div className={`relative w-full overflow-hidden ${aspectClass}`}>
+        <Image
+          src={image.url}
+          alt={image.title}
+          fill
+          className="object-cover"
+          sizes="100vw"
+          onLoadingComplete={(img) => {
+            const isLandscape = img.naturalWidth > img.naturalHeight;
+            setOrientation(isLandscape ? "landscape" : "portrait");
+          }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+export default function PortfolioPage() {
+  const col0 = PORTFOLIO_IMAGES.filter((_, i) => i % 3 === 0);
+  const col1 = PORTFOLIO_IMAGES.filter((_, i) => i % 3 === 1);
+  const col2 = PORTFOLIO_IMAGES.filter((_, i) => i % 3 === 2);
+
+  const cinematicHeight = "h-[720px] lg:h-[900px]";
+  const gapBetween = "mb-10";
+
+  return (
+    <div className="bg-white">
+      <HeroNavbar />
+
+      <section className="bg-[#fafafa] py-32 text-center">
+        <h1 className="font-playfair text-6xl lg:text-8xl tracking-wide">
+          PORTFOLIO
+        </h1>
+        <p className="mt-6 text-xs uppercase tracking-[0.3em] text-neutral-600">
+          A curated collection of timeless imagery
+        </p>
       </section>
 
-      {/* Filter Tabs */}
-      <section className="py-12 bg-black border-b border-white">
-        <div className="container-custom">
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            {PORTFOLIO_CATEGORIES.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 text-sm font-semibold transition-all duration-200 relative ${
-                  activeCategory === category
-                    ? "text-white"
-                    : "text-white hover:text-gray-400"
-                }`}
-              >
-                {category}
-                {activeCategory === category && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
-                  />
-                )}
-              </button>
-            ))}
+      <section className="py-32">
+        <div className="flex flex-col gap-y-10">
+          <div className="flex flex-col lg:flex-row gap-x-3 w-full">
+            <div className="flex-1">
+              <ParallaxCard image={col0[0]} speed={0.5} fixedHeight={cinematicHeight} />
+            </div>
+            <div className="flex-1">
+              <ParallaxCard image={col1[0]} speed={0.8} fixedHeight={cinematicHeight} />
+            </div>
+            <div className="flex-1">
+              <ParallaxCard image={col2[0]} speed={1.1} fixedHeight={cinematicHeight} />
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Portfolio Grid */}
-      <section className="py-20 md:py-32 bg-black">
-        <div className="container-custom">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-            >
-              {filteredImages.map((image, index) => (
-                <motion.div
-                  key={image.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  whileHover={{ y: -8 }}
-                  className="relative aspect-[3/4] overflow-hidden group cursor-pointer"
-                >
-                  <Image
-                    src={image.url}
-                    alt={image.title}
-                    fill
-                    className="object-cover image-zoom"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
-                    <h3 className="text-white font-semibold text-lg mb-2 text-center">
-                      {image.title}
-                    </h3>
-                    <p className="text-white text-sm">{image.category}</p>
-                  </div>
-                </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-3">
+            <div className="flex flex-col gap-y-10">
+              {col0.slice(1).map((image) => (
+                <ParallaxCard key={image.id} image={image} speed={0.5} />
               ))}
-            </motion.div>
-          </AnimatePresence>
+            </div>
+            <div className="flex flex-col gap-y-10">
+              {col1.slice(1).map((image) => (
+                <ParallaxCard key={image.id} image={image} speed={0.8} />
+              ))}
+            </div>
+            <div className="flex flex-col gap-y-10">
+              {col2.slice(1).map((image) => (
+                <ParallaxCard key={image.id} image={image} speed={1.1} />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </div>
   );
 }
-
