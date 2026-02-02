@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import HeroNavbar from "@/components/HeroNavbar";
 import Testimonial from "@/components/Testimonial";
-import { TESTIMONIALS } from "@/lib/constants";
+import { TESTIMONIALS, SERVICES } from "@/lib/constants";
 
 export default function AboutPage() {
   return (
@@ -91,6 +91,56 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+
+         {/* Services Section */}
+      <section className="py-20 md:py-32 bg-black">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
+              Our Services
+            </h2>
+            <p className="text-white max-w-2xl mx-auto">
+              Professional photography services tailored to your needs
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {SERVICES.slice(0, 4).map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`relative h-96 overflow-hidden group cursor-pointer ${
+                  index % 2 === 1 ? 'md:mt-10' : ''
+                }`}
+              >
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover image-zoom"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 className="text-2xl font-heading font-bold mb-2 text-brown">
+                    {service.title}
+                  </h3>
+                  <p className="text-white">{service.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
 
       {/* Testimonials Section */}
       <section className="py-20 md:py-32 bg-black">

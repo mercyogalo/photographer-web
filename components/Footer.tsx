@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
+import Logo from "@/components/Logo";
+
 
 export default function Footer() {
   const midpoint = Math.ceil(NAV_LINKS.length / 2);
@@ -7,31 +9,26 @@ export default function Footer() {
   const rightLinks = NAV_LINKS.slice(midpoint);
 
   return (
-    <footer className="bg-black text-white pt-20">
+    <footer className="bg-black text-white pt-10">
       <div className="container-custom">
 
         {/* Top Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 mb-10">
 
           {/* Left */}
           <div className="space-y-8">
-            <div className="w-16 h-16 border border-white flex items-center justify-center text-xl font-serif">
-              D
-            </div>
-
-            <p className="text-gray-300 text-lg max-w-sm">
-              Refined and timeless imagery for modern day lovers.
-            </p>
+            <Logo size="lg"/>
+            <p className="text-5xl">Refined and timeless imagery for modern day lovers.</p>
           </div>
 
-          {/* Right: Auto-generated Nav */}
-          <div className="grid grid-cols-2 gap-16 font-serif text-lg">
+         
+          <div className="grid grid-cols-2 gap-2 font-serif text-lg">
             <ul className="space-y-4">
               {leftLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="hover:text-gray-400 transition-colors"
+                    className="hover:text-gray-400  text-2xl transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -44,7 +41,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="hover:text-gray-400 transition-colors"
+                    className="hover:text-gray-400 text-2xl transition-colors"
                   >
                     {link.label}
                   </Link>

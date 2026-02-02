@@ -23,12 +23,12 @@ html {
 
 body {
   font-family: var(--font-inter);
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color:#FFFFFF;
+  color: #000000;
 }
 
 main {
-  background-color: #131214;
+  background-color: #FFFFFF;
 }
 
 /* Smooth scrollbar */
