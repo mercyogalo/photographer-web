@@ -329,34 +329,8 @@ export default function Home() {
 
       <ScrollCarousel />
 
-
-
-             <section className="py-20 md:py-32 bg-black">
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
-      {SERVICES.slice(0,4).map((service, index) => (
-        <motion.div
-          key={service.id}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          className="relative w-full h-[300px] md:h-[400px] sm:h-[300px] sm:mt-3 sm:w-full lg:h-[400px] overflow-hidden group"
-        >
-          <Image
-            src={service.image}
-            alt={service.title}
-            fill
-            className="object-cover image-zoom"
-          />
-        </motion.div>
-      ))}
-    </div>
-</section>
-
-
-
-
-
+             
+           
 
     </div>
   );

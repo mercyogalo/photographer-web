@@ -21,11 +21,11 @@ export default function FAQ() {
         >
           <button
             onClick={() => toggleFAQ(index)}
-            className="w-full py-5 px-0 flex items-center justify-between text-left hover:bg-gray-900 transition-colors duration-200 group"
+            className="w-full py-5 px-0 flex items-center justify-between text-left transition-colors duration-200 group"
             aria-expanded={openIndex === index}
             aria-controls={`faq-answer-${faq.id}`}
           >
-            <h3 className="text-lg font-semibold text-white pr-8 group-hover:text-gray-400 transition-colors">
+            <h3 className="text-lg font-semibold text-black pr-8 transition-colors">
               {faq.question}
             </h3>
             <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
@@ -52,7 +52,7 @@ export default function FAQ() {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="overflow-hidden"
               >
-                <p className="pb-5 text-white text-base leading-relaxed">
+                <p className="pb-5 text-black text-base leading-relaxed">
                   {faq.answer}
                 </p>
               </motion.div>

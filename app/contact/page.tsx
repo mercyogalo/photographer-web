@@ -78,7 +78,7 @@ export default function ContactPage() {
           />
         </div>
         <div className="absolute inset-0 bg-gray-900/60 z-10" />
-        <div className="relative z-20 text-center text-white px-4">
+        <div className="relative z-20 text-center text-black px-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 md:py-32 bg-black">
+      <section className="py-20 md:py-32 bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Side - Contact Form */}
@@ -252,7 +252,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQs Section */}
-      <section className="py-20 md:py-32 bg-black">
+      <section className="py-20 md:py-32 bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Column - Heading */}
@@ -266,7 +266,7 @@ export default function ContactPage() {
               <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
                 Frequently Asked Questions
               </h2>
-              <p className="text-white text-lg leading-relaxed">
+              <p className="text-black text-lg leading-relaxed">
                 Find answers to common questions about our photography services, booking process, and more.
               </p>
             </motion.div>

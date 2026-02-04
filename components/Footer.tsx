@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
 import Logo from "@/components/Logo";
+import ImagesCarousel from "@/components/ImagesCarousel";
 
 
 export default function Footer() {
@@ -9,8 +10,11 @@ export default function Footer() {
   const rightLinks = NAV_LINKS.slice(midpoint);
 
   return (
+    <div>
+
+     <ImagesCarousel />
+
     <footer className="bg-black text-white pt-10">
-      <div className="container-custom">
 
         {/* Top Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 mb-10">
@@ -66,7 +70,8 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} FULGENCE RABACH. ALL RIGHTS RESERVED.</p>
         </div>
 
-      </div>
+    
     </footer>
+    </div>
   );
 }
