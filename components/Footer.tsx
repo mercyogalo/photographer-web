@@ -17,12 +17,12 @@ export default function Footer() {
     <footer className="bg-black text-white pt-10">
 
         {/* Top Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 mb-10 items-end">
 
           {/* Left */}
           <div className="space-y-8">
             <Logo size="lg"/>
-            <p className="text-5xl">Refined and timeless imagery for modern day lovers.</p>
+            <p className="text-[35px]">Refined and timeless imagery for modern day lovers.</p>
           </div>
 
          
@@ -32,7 +32,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="hover:text-gray-400  text-2xl transition-colors"
+                    className="hover:text-gray-400  text-[35px] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -45,7 +45,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="hover:text-gray-400 text-2xl transition-colors"
+                    className="hover:text-gray-400 text-[35px] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -55,17 +55,17 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Brand Text */}
+       
         <div className="overflow-hidden mb-16">
           <h1
-            className="text-[18vw] leading-none whitespace-nowrap"
+            className="text-[17vw] leading-none whitespace-nowrap tracking-[0.1em] text-white"
             style={{ fontFamily: '"Times New Roman", Times, serif' }}
           >
-          FULGENCE
+            FULGENCE 
           </h1>
         </div>
 
-        {/* Bottom Bar */}
+       
         <div className="flex flex-col md:flex-row justify-between pb-8 text-sm text-gray-500">
           <p>© {new Date().getFullYear()} FULGENCE RABACH. ALL RIGHTS RESERVED.</p>
         </div>

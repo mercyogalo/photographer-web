@@ -100,7 +100,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Blog/Videos Section */}
-      <section id="blog" className="py-20 md:py-32 bg-black">
+      <section id="blog" className="py-20 md:py-32 bg-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

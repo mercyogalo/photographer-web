@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const testimonials = [
     {
@@ -28,20 +30,64 @@ export default function Testimonials() {
     }
   ];
 
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        changeSlide('next');
+      }, 5000); // Change slide every 5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [isPaused, testimonials.length, currentIndex]);
+
+  const changeSlide = (direction) => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    // Wait for fade out
+    setTimeout(() => {
+      if (direction === 'next') {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+        );
+      } else {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+        );
+      }
+      
+      // Wait a bit then fade in
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 400); // Duration of fade out
+  };
+
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    );
+    changeSlide('next');
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
+    changeSlide('prev');
+  };
+
+  const goToSlide = (index) => {
+    if (isTransitioning || index === currentIndex) return;
+    
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      setCurrentIndex(index);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 400);
   };
 
   return (
-    <section className="w-full py-32 px-4 bg-white">
+    <section className="w-full py-24 px-4 bg-[#fafafa]">
         <div className="row">
           <div className="col-12">
             {/* Main Heading */}
@@ -50,70 +96,94 @@ export default function Testimonials() {
             </h4>
 
             {/* Carousel Container */}
-            <div className="relative max-w-5xl mx-auto">
+            <div 
+              className="relative max-w-5xl mx-auto"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
               {/* Navigation Arrows */}
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 lg:-translate-x-16 z-10 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-300"
+                disabled={isTransitioning}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 lg:-translate-x-16 z-10 text-black hover:text-gray-600 transition-colors disabled:opacity-50"
                 aria-label="Previous testimonial"
               >
-                <svg 
-                  className="w-6 h-6 text-gray-800" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M15 19l-7-7 7-7" 
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
                   />
                 </svg>
               </button>
 
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 lg:translate-x-16 z-10 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-300"
+                disabled={isTransitioning}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 lg:translate-x-16 z-10 text-black hover:text-gray-600 transition-colors disabled:opacity-50"
                 aria-label="Next testimonial"
               >
-                <svg 
-                  className="w-6 h-6 text-gray-800" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M9 5l7 7-7 7" 
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
                   />
                 </svg>
               </button>
 
-              {/* Testimonial Content */}
-              <div className="flex flex-col justify-center">
-                <div className="text-center">
-                  {/* Review Headline */}
-                  <h3 className="text-2xl md:text-3xl italic lg:text-4xl font-semibold mb-6 text-gray-900">
+              {/* Content with fade transition */}
+              <div className="flex flex-col justify-center min-h-[400px]">
+                <div 
+                  className={`text-center transition-opacity duration-400 ${
+                    isTransitioning ? 'opacity-0' : 'opacity-100'
+                  }`}
+                >
+                 
+                  <h3 className="text-2xl md:text-3xl italic lg:text-4xl font-semibold mb-6 text-black">
                     "{testimonials[currentIndex].headline}"
                   </h3>
 
-
-                  {/* Review Text */}
-                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
+                  
+                  <p className="text-lg md:text-xl text-black leading-relaxed mb-8 max-w-3xl mx-auto">
                     {testimonials[currentIndex].review}
                   </p>
 
-                  {/* Reviewer Name */}
-                  <p className="text-xl md:text-2xl font-semibold text-gray-900">
+                 
+                  <p className="text-xl md:text-2xl font-semibold text-black">
                     {testimonials[currentIndex].reviewer}
                   </p>
                 </div>
               </div>
 
-             
+              {/* Dots Indicator */}
+              <div className="flex justify-center gap-2 mt-8">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    disabled={isTransitioning}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 disabled:cursor-not-allowed ${
+                      index === currentIndex 
+                        ? 'bg-black w-8' 
+                        : 'bg-gray-400 hover:bg-gray-600'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

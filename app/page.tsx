@@ -80,21 +80,23 @@ export default function Home() {
 
   return (
     <div>
-      <section className="relative h-screen bg-white overflow-hidden">
-        <HeroNavbar />
-
-       
-        <div className=" top-16 md:top-20 left-0 right-0 z-40 bg-white py-6">
+     
+     <HeroNavbar />
+     <section>
+     <div className="pt-32 pb-18 bg-[#fafafa]">
           <h1
-            className="text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-[0.1em] text-black"
+            className="text-center text-15xl sm:text-8xl md:text-6xl lg:text-15xl xl:text-20xl tracking-[0.1em] text-black/80"
             style={{ fontFamily: '"Times New Roman", Times, serif' }}
           >
             FULGENCE RABACH
           </h1>
         </div>
+     </section>
 
-        {/* CAROUSELS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 h-screen">
+
+     
+      <section className="relative min-h-screen bg-white overflow-hidden flex flex-col">  
+        <div className="grid grid-cols-1 md:grid-cols-2 flex-1">
           <HeroCarousel
             images={[
               "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80",
@@ -110,8 +112,8 @@ export default function Home() {
           />
         </div>
 
-        {/* CENTERED LOGO + TEXT + CTA */}
-        <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none">
+       
+        <div className="pointer-events-none absolute inset-0 z-40 flex items-center justify-center">
           <div className="flex flex-col items-center gap-8 text-center">
             <Logo size="lg" animated />
 
@@ -130,8 +132,8 @@ export default function Home() {
               transition={{ duration: 1.2, delay: 0.7 }}
               className="pointer-events-auto"
             >
-              <Link href="/portfolio" className="text-white">
-                EXPLORE MY WORK 
+              <Link href="/portfolio" className="inline-flex items-center gap-2 text-white tracking-[0.2em]">
+                <span>EXPLORE MY WORK</span>
                 <ArrowRight
                   className="w-4 h-4"
                   style={{ transform: "rotate(-45deg)" }}
@@ -142,10 +144,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-20 text-center">
-        <h3 className="text-lg font-playfair">FULGENCE RABACH CREATIONS</h3>
-        <h2 className="lg:text-5xl font-montserrat">CAPTURING STORIES</h2>
-        <h2 className="lg:text-5xl mt-2 font-montserrat">THAT LAST A LIFETIME</h2>
+  
+     
+      <section className="bg-white py-16 md:py-20 flex flex-col items-center justify-center text-center px-4">
+        <h3 className="text-lg font-playfair text-white mb-4">
+          FULGENCE RABACH CREATIONS
+        </h3>
+        <h2 className="lg:text-5xl text-3xl font-montserrat text-brown">
+          CAPTURING STORIES
+        </h2>
+        <h2 className="lg:text-5xl text-3xl mt-2 font-montserrat text-brown">
+          THAT LAST A LIFETIME
+        </h2>
       </section>
 
     {/* About Section */}
@@ -293,7 +303,7 @@ export default function Home() {
       <section className="lg:py-42 md:py-40 py-32 relative">
   <div className="absolute inset-0 ">
     <Image
-      src="/images/Global/video-section-image.jpg"
+      src="/images/Hero/hero-3.jpg"
       alt="Background"
       fill
       className="object-cover"

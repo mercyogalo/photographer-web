@@ -7,37 +7,17 @@ import { SERVICES } from "@/lib/constants";
 
 export default function AboutPage() {
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-        <HeroNavbar />
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=1080&fit=crop"
-            alt="About"
-            fill
-            className="object-cover grayscale"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gray-900/60 z-10" />
-        <div className="relative z-20 text-center text-black px-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-brown"
-          >
-            About PhotoStudio
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl max-w-2xl mx-auto"
-          >
-            Capturing life's most precious moments with artistry and passion
-          </motion.p>
-        </div>
+    <div className="bg-white">
+      <HeroNavbar />
+
+      {/* Hero Section - reuse portfolio layout */}
+      <section className="bg-[#fafafa] py-32 text-center">
+        <h1 className="font-playfair text-6xl lg:text-8xl tracking-wide text-brown">
+          ABOUT
+        </h1>
+        <p className="mt-6 text-xs uppercase tracking-[0.3em] text-neutral-600">
+          Capturing life's most precious moments with artistry and passion
+        </p>
       </section>
 
       {/* About Content Section */}

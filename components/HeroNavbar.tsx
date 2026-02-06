@@ -15,7 +15,7 @@ export default function HeroNavbar() {
     <>
       {/* Navbar */}
       <nav className="absolute top-0 left-0 right-0 z-50 w-full bg-[#fafafa]">
-        <div className="max-w-full px-6 lg:px-12">
+        <div className="max-w-full px-6 lg:px-10">
           <div className="flex items-center justify-between h-16 md:h-20">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -55,8 +55,9 @@ export default function HeroNavbar() {
           </div>
         </div>
 
-        {/* Horizontal Line */}
-        <div className="w-full h-px bg-black/10"></div>
+        {/* Horizontal Line  */}
+        <hr className="w-full bg-black/10" />
+       
       </nav>
 
 
