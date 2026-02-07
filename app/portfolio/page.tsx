@@ -10,10 +10,12 @@ function ParallaxCard({
   image,
   speed,
   fixedHeight,
+  extraClass,
 }: {
   image: { id: string; url: string; title: string };
   speed: number;
   fixedHeight?: string;
+  extraClass?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [orientation, setOrientation] = useState<"portrait" | "landscape">(
@@ -34,7 +36,7 @@ function ParallaxCard({
     : "aspect-[4/3]";
 
   return (
-    <motion.div ref={ref} style={{ y }} className="w-full">
+    <motion.div ref={ref} style={{ y }} className={`w-full ${extraClass ?? ""}`}>
       <div className={`relative w-full overflow-hidden ${aspectClass}`}>
         <Image
           src={image.url}
@@ -74,33 +76,33 @@ export default function PortfolioPage() {
       </section>
 
       <section className="py-32">
-        <div className="flex flex-col gap-y-10">
+        <div className="flex flex-col gap-y-8">
           <div className="flex flex-col lg:flex-row gap-x-3 w-full">
             <div className="flex-1">
-              <ParallaxCard image={col0[0]} speed={0.5} fixedHeight={cinematicHeight} />
+                <ParallaxCard image={col0[0]} speed={0.5} fixedHeight={cinematicHeight} extraClass="my-2" />
             </div>
             <div className="flex-1">
-              <ParallaxCard image={col1[0]} speed={0.8} fixedHeight={cinematicHeight} />
+                <ParallaxCard image={col1[0]} speed={0.8} fixedHeight={cinematicHeight} extraClass="my-2" />
             </div>
             <div className="flex-1">
-              <ParallaxCard image={col2[0]} speed={1.1} fixedHeight={cinematicHeight} />
+                <ParallaxCard image={col2[0]} speed={1.1} fixedHeight={cinematicHeight} extraClass="my-2" />
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-3">
             <div className="flex flex-col gap-y-10">
               {col0.slice(1).map((image) => (
-                <ParallaxCard key={image.id} image={image} speed={0.5} />
+                <ParallaxCard key={image.id} image={image} speed={0.5} extraClass="my-10" />
               ))}
             </div>
             <div className="flex flex-col gap-y-10">
               {col1.slice(1).map((image) => (
-                <ParallaxCard key={image.id} image={image} speed={0.8} />
+                <ParallaxCard key={image.id} image={image} speed={0.8} extraClass="my-10" />
               ))}
             </div>
             <div className="flex flex-col gap-y-10">
               {col2.slice(1).map((image) => (
-                <ParallaxCard key={image.id} image={image} speed={1.1} />
+                <ParallaxCard key={image.id} image={image} speed={1.1} extraClass="my-10" />
               ))}
             </div>
           </div>

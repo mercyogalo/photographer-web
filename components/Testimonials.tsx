@@ -46,7 +46,7 @@ export default function Testimonials() {
     
     setIsTransitioning(true);
     
-    // Wait for fade out
+    
     setTimeout(() => {
       if (direction === 'next') {
         setCurrentIndex((prevIndex) =>
@@ -144,7 +144,7 @@ export default function Testimonials() {
                 </svg>
               </button>
 
-              {/* Content with fade transition */}
+             
               <div className="flex flex-col justify-center min-h-[400px]">
                 <div 
                   className={`text-center transition-opacity duration-400 ${
@@ -168,22 +168,8 @@ export default function Testimonials() {
                 </div>
               </div>
 
-              {/* Dots Indicator */}
-              <div className="flex justify-center gap-2 mt-8">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    disabled={isTransitioning}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 disabled:cursor-not-allowed ${
-                      index === currentIndex 
-                        ? 'bg-black w-8' 
-                        : 'bg-gray-400 hover:bg-gray-600'
-                    }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
+             
+
             </div>
           </div>
         </div>

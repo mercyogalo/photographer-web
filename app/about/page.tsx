@@ -4,7 +4,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import HeroNavbar from "@/components/HeroNavbar";
 import { SERVICES } from "@/lib/constants";
-
+import Testimonials from "@/components/Testimonials";
+import { ArrowRight } from "lucide-react";
 export default function AboutPage() {
   return (
     <div className="bg-white">
@@ -120,6 +121,44 @@ export default function AboutPage() {
         </div>
       </section>
       
+
+
+        <section className="lg:py-42 md:py-40 py-32 relative">
+  <div className="absolute inset-0 ">
+    <Image
+      src="/images/Hero/hero-3.jpg"
+      alt="Background"
+      fill
+      className="object-cover"
+    />
+  </div>
+  <div className="container-custom relative z-10">
+    <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-end min-h-[60vh]">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex justify-center items-center"
+      >
+        <a 
+          href="/about" 
+          className="flex items-center gap-3 text-white text-lg font-semibold tracking-wider uppercase hover:opacity-80 transition-opacity duration-300 group"
+        >
+          <span>EXPLORE MY SERVICES</span>
+           <ArrowRight
+                  className="w-4 h-4"
+                  style={{ transform: "rotate(-45deg)" }}
+                />
+        </a>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
+
+
+      <Testimonials />
 
     
     </div>
