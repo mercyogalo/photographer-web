@@ -78,7 +78,7 @@ export default function ContactPage() {
           />
         </div>
         <div className="absolute inset-0 bg-gray-900/60 z-10" />
-        <div className="relative z-20 text-left text-white px-4 md:px-8 lg:px-12 xl:px-16 container-custom">
+        <div className="relative z-20 text-left text-black px-4 md:px-8 lg:px-12 xl:px-16 container-custom">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -91,15 +91,15 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl text-white"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl text-black"
           >
             Let's discuss your photography needs
           </motion.p>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-20 md:py-32 bg-black">
+
+      <section className="py-20 md:py-32 bg-white">
         <div className="container-custom px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
            
@@ -113,44 +113,35 @@ export default function ContactPage() {
                 Send us a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
-                  <Input
+                <Input
                     label="Name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     error={errors.name}
-                    className="bg-white"
+                    className="bg-white text-black"
+                    placeholder="Enter your name"
                     required
                   />
-                  <Input
+                <Input
                     label="Email"
                     name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
                     error={errors.email}
-                    className="bg-white"
+                    className="bg-white text-black"
+                     placeholder="Email address"
                     required
                   />
-                </div>
-                <Input
-                  label="Phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  error={errors.phone}
-                  className="bg-white"
-                  required
-                />
                 <Input
                   label="Subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   error={errors.subject}
-                  className="bg-white"
+                  className="bg-white text-black"
+                  placeholder="Subject"
                   required
                 />
                 <Textarea
@@ -159,26 +150,27 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   error={errors.message}
-                  className="bg-white"
+                  className="bg-white text-black"
+                  placeholder="Message"
                   required
                 />
                 {submitStatus === "success" && (
-                  <div className="p-4 bg-gray-800 text-white rounded-md">
+                  <div className="p-4 bg-gray-800 text-black rounded-md">
                     Thank you! Your message has been sent successfully.
                   </div>
                 )}
                 {submitStatus === "error" && (
-                  <div className="p-4 bg-gray-800 text-white rounded-md">
+                  <div className="p-4 bg-gray-800 text-black rounded-md">
                     Something went wrong. Please try again.
                   </div>
                 )}
-                <Button type="submit" disabled={isSubmitting}>
+                <Button type="submit" disabled={isSubmitting} className="bg-brown text-white">
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </motion.div>
 
-            {/* Right Side - Contact Information */}
+            
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -190,59 +182,59 @@ export default function ContactPage() {
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-800 rounded-lg">
-                    <MapPin className="w-6 h-6 text-white" />
+                  <div className="p-3 bg-brown rounded-lg">
+                    <MapPin className="w-6 h-6 text-white bg-brown" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">
+                    <h3 className="font-semibold text-black mb-1">
                       Address
                     </h3>
-                    <p className="text-white">
+                    <p className="text-black">
                       New York, NY, United States
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-800 rounded-lg">
-                    <Phone className="w-6 h-6 text-white" />
+                  <div className="p-3 bg-brown rounded-lg">
+                    <Phone className="w-6 h-6 text-white bg-brown" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">
+                    <h3 className="font-semibold text-black mb-1">
                       Phone
                     </h3>
                     <a
                       href="tel:+1234567890"
-                      className="text-white hover:text-gray-400 transition-colors"
+                      className="text-black hover:text-gray-400 transition-colors"
                     >
                       +123 456 7890
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-800 rounded-lg">
-                    <Mail className="w-6 h-6 text-white" />
+                  <div className="p-3 bg-brown rounded-lg">
+                    <Mail className="w-6 h-6 text-white bg-brown" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">
+                    <h3 className="font-semibold text-black mb-1">
                       Email
                     </h3>
                     <a
                       href="mailto:info@photographer.com"
-                      className="text-white hover:text-gray-400 transition-colors"
+                      className="text-black hover:text-gray-400 transition-colors"
                     >
                       info@photographer.com
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-800 rounded-lg">
-                    <Clock className="w-6 h-6 text-white" />
+                  <div className="p-3 bg-brown rounded-lg">
+                    <Clock className="w-6 h-6 text-white bg-brown" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">
+                    <h3 className="font-semibold text-black mb-1">
                       Working Hours
                     </h3>
-                    <p className="text-white">
+                    <p className="text-black">
                       Mon-Fri: 9AM-6PM<br />
                       Sat: 10AM-4PM<br />
                       Sun: Closed
@@ -256,38 +248,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* FAQs Section */}
-      <section className="py-20 md:py-32 bg-black">
-        <div className="container-custom px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            {/* Left Column - Heading */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:sticky lg:top-24 h-fit"
-            >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-white text-base sm:text-lg leading-relaxed">
-                Find answers to common questions about our photography services, booking process, and more.
-              </p>
-            </motion.div>
-
-            {/* Right Column - FAQ List */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <FAQ />
-            </motion.div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

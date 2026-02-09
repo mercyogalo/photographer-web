@@ -146,7 +146,8 @@ export default function Testimonials() {
                     }}
                     className="text-center"
                   >
-                    <h3 className="text-2xl md:text-2xl italic lg:text-3xl italic mb-6 text-black">
+                    <h3  style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                    className="text-2xl md:text-2xl italic font-semibold lg:text-3xl italic mb-6 text-black">
                       "{testimonials[currentIndex].headline}"
                     </h3>
 
@@ -154,7 +155,8 @@ export default function Testimonials() {
                       {testimonials[currentIndex].review}
                     </p>
 
-                    <p className="text-xl md:text-2xl font-semibold text-black">
+                    <p  style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                    className="text-xl md:text-2xl font-semibold text-black">
                       {testimonials[currentIndex].reviewer}
                     </p>
                   </motion.div>
