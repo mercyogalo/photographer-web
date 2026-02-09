@@ -37,24 +37,24 @@ export default function ServicesPage() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden">
+    
+      <section className="relative h-[100vh] lg:h-[100vh] md:h-[70vh] sm-[60vh] flex items-center overflow-hidden">
         <HeroNavbar />
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/Hero/hero-3.jpg"
             alt="Services"
             fill
-            className="object-cover grayscale"
+            className="object-cover "
           />
         </div>
         <div className="absolute inset-0 bg-gray-900/60 z-10" />
-        <div className="relative z-20 text-left text-white px-4 md:px-8 lg:px-12 xl:px-16 container-custom">
+        <div className="relative z-20 text-left text-white px-4 md:px-8 lg:px-12 xl:px-16">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-brown"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-brown text-left"
           >
             Our Services
           </motion.h1>
@@ -62,15 +62,15 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl text-white"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl text-white text-left"
           >
             Professional photography services tailored to your needs
           </motion.p>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20 md:py-32 bg-black">
+    
+      <section className="py-20 md:py-32 bg-white">
         <div className="container-custom px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {SERVICES.map((service, index) => (
@@ -100,7 +100,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Blog/Videos Section */}
-      <section id="blog" className="py-20 md:py-32 bg-black">
+      <section id="blog" className="py-20 md:py-32 bg-[#fafafa]">
         <div className="container-custom px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -124,31 +124,25 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-black overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-white overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2">
-                  {/* Video Side */}
+    
                   <div className="relative aspect-[9/16] md:aspect-[9/16] lg:aspect-auto">
                     <VideoPlayer
                       src={blog.videoSrc}
                       className="w-full h-full"
                     />
                   </div>
-                  {/* Text Side */}
+                  
                   <div className="p-4 sm:p-6 flex flex-col justify-center">
-                    <h3 className="text-xl sm:text-2xl font-heading font-bold mb-3 text-brown">
+                    <h3 className="text-xl sm:text-2xl font-heading font-bold mb-3 text-black">
                       {blog.title}
                     </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-white mb-4 leading-relaxed">
+                    <p className="text-sm sm:text-base md:text-lg text-black mb-4 leading-relaxed">
                       {blog.description}
                     </p>
-                    <Link
-                      href="#"
-                      className="text-sm sm:text-base text-white font-semibold hover:underline inline-flex items-center gap-2"
-                    >
-                      Read More
-                      <span>→</span>
-                    </Link>
+                    
                   </div>
                 </div>
               </motion.div>

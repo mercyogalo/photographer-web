@@ -79,13 +79,13 @@ export default function PortfolioPage() {
         <div className="flex flex-col gap-y-8">
           <div className="flex flex-col lg:flex-row gap-x-3 w-full">
             <div className="flex-1">
-                <ParallaxCard image={col0[0]} speed={0.5} fixedHeight={cinematicHeight} extraClass="my-2" />
+                <ParallaxCard image={col0[0]} speed={0.5} fixedHeight={cinematicHeight} extraClass="my-2" className="sm:mb-2 "  />
             </div>
             <div className="flex-1">
-                <ParallaxCard image={col1[0]} speed={0.8} fixedHeight={cinematicHeight} extraClass="my-2" />
+                <ParallaxCard image={col1[0]} speed={0.8} fixedHeight={cinematicHeight} extraClass="my-2" className="sm:mb-2 "  />
             </div>
             <div className="flex-1">
-                <ParallaxCard image={col2[0]} speed={1.1} fixedHeight={cinematicHeight} extraClass="my-2" />
+                <ParallaxCard image={col2[0]} speed={1.1} fixedHeight={cinematicHeight} extraClass="my-2" className="sm:mb-2 "  />
             </div>
           </div>
 

@@ -67,34 +67,37 @@ export default function ContactPage() {
   return (
     <div>
     
-      <section className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden">
+      <section className="relative h-[100vh] lg:h-[100vh] md:h-[70vh] sm-[60vh] flex items-center overflow-hidden">
         <HeroNavbar />
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&h=1080&fit=crop"
             alt="Contact"
             fill
-            className="object-cover grayscale"
+            className="object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gray-900/60 z-10" />
-        <div className="relative z-20 text-left text-black px-4 md:px-8 lg:px-12 xl:px-16 container-custom">
+        <div className="absolute inset-0  z-10" />
+        <div className="relative z-20 text-left text-white px-4 md:px-8 lg:px-12 xl:px-16">
+        <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl text-white text-left"
+          >
+            Contact
+          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-brown"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-brown text-left"
           >
-            Get In Touch
+          Thank you so much for
+          your interest in
+          working together
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl text-black"
-          >
-            Let's discuss your photography needs
-          </motion.p>
+          
         </div>
       </section>
 

@@ -27,24 +27,46 @@ export default function AboutPage() {
         <div className="container-custom px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="relative w-3/4 aspect-[4/5] mx-auto">
-                <Image
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=1000&fit=crop"
-                  alt="Photographer"
-                  fill
-                  className="object-cover"
-                />
-               
-                <div className="absolute top-0 left-0 w-1/2 h-1/2 border-t-4 border-l-4 border-white rounded-tl-lg" />
-              </div>
-            </motion.div>
+                    <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center"
+          >
+            <div className="grid grid-cols-2 gap-6 max-w-md w-full">
+
+              <div
+                className="col-span-2 h-[280px] rounded-[36px] bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200')",
+                  backgroundPosition: "center top",
+                }}
+              />
+
+                  
+          <div
+            className="h-[140px] rounded-[36px] bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200')",
+              backgroundPosition: "left center",
+            }}
+          />
+
+          
+          <div
+            className="h-[120px] rounded-[36px] bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200')",
+              backgroundPosition: "right bottom",
+            }}
+          />
+        </div>
+      </motion.div>
+
 
             
             <motion.div
@@ -56,22 +78,75 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-6 text-brown">
                 Our Story
               </h2>
-              <p className="text-white text-sm sm:text-base md:text-lg mb-4 leading-relaxed">
+              <p className="text-black text-sm sm:text-base md:text-lg mb-4 leading-relaxed">
                 With over a decade of experience in professional photography, PhotoStudio has been dedicated to capturing life's most precious moments. Our journey began with a simple passion for storytelling through images, and has evolved into a full-service photography studio serving clients worldwide.
               </p>
-              <p className="text-black mb-4 leading-relaxed">
+              <p className="text-black text-sm sm:text-base md:text-lg mb-4 leading-relaxed">
                 We specialize in wedding photography, portrait sessions, corporate events, and commercial photography. Our team of skilled photographers combines technical expertise with creative vision to deliver stunning results that exceed expectations.
               </p>
-              <p className="text-black mb-4 leading-relaxed">
+              <p className="text-black text-sm sm:text-base md:text-lg mb-4 leading-relaxed">
                 What sets us apart is our commitment to understanding each client's unique vision. We take the time to listen, collaborate, and create images that truly reflect your personality, style, and the essence of your special moments.
-              </p>
-              <p className="text-black leading-relaxed">
-                Every photograph we create is a work of art, carefully composed and edited to perfection. We believe that great photography is not just about capturing what you see, but about revealing the emotions, stories, and beauty that lie beneath the surface.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
+
+
+
+
+      <section className="py-20 md:py-32 bg-[#fafafa]">
+  <div className="container-custom px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+
+      {/* Image */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex justify-center"
+      >
+        <div className="relative w-full max-w-md aspect-[4/5] rounded-2xl overflow-hidden">
+          <Image
+            src="/images/Hero/hero-3.jpg"
+            alt="Our Story"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      </motion.div>
+
+      {/* Text */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-6 text-brown">
+          Our Story
+        </h2>
+
+        <p className="text-black text-sm sm:text-base md:text-lg mb-4 leading-relaxed">
+          With over a decade of experience in professional photography, PhotoStudio has been dedicated to capturing life's most precious moments. Our journey began with a simple passion for storytelling through images, and has evolved into a full-service photography studio serving clients worldwide.
+        </p>
+
+        <p className="text-black text-sm sm:text-base md:text-lg mb-4 leading-relaxed">
+          We specialize in wedding photography, portrait sessions, corporate events, and commercial photography. Our team of skilled photographers combines technical expertise with creative vision to deliver stunning results that exceed expectations.
+        </p>
+
+        <p className="text-black text-sm sm:text-base md:text-lg leading-relaxed">
+          What sets us apart is our commitment to understanding each client's unique vision. We take the time to listen, collaborate, and create images that truly reflect your personality, style, and the essence of your special moments.
+        </p>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
+
+      
 
 
        
@@ -132,7 +207,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12 md:mb-16"
           >
-            <h2  style={{ fontFamily: '"Times New Roman", Times, serif' }}  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-brown">
+            <h2  style={{ fontFamily: '"Times New Roman", Times, serif' }}  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
               Motivation
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto">
