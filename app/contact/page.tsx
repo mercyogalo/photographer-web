@@ -66,8 +66,8 @@ export default function ContactPage() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+    
+      <section className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden">
         <HeroNavbar />
         <div className="absolute inset-0 z-0">
           <Image
@@ -78,12 +78,12 @@ export default function ContactPage() {
           />
         </div>
         <div className="absolute inset-0 bg-gray-900/60 z-10" />
-        <div className="relative z-20 text-center text-black px-4">
+        <div className="relative z-20 text-left text-white px-4 md:px-8 lg:px-12 xl:px-16 container-custom">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-brown"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-brown"
           >
             Get In Touch
           </motion.h1>
@@ -91,7 +91,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl text-white"
           >
             Let's discuss your photography needs
           </motion.p>
@@ -99,27 +99,28 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left Side - Contact Form */}
+      <section className="py-20 md:py-32 bg-black">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+           
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-brown">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-6 md:mb-8 text-brown">
                 Send us a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
                   <Input
                     label="Name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     error={errors.name}
+                    className="bg-white"
                     required
                   />
                   <Input
@@ -129,6 +130,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     error={errors.email}
+                    className="bg-white"
                     required
                   />
                 </div>
@@ -139,6 +141,7 @@ export default function ContactPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   error={errors.phone}
+                  className="bg-white"
                   required
                 />
                 <Input
@@ -147,6 +150,7 @@ export default function ContactPage() {
                   value={formData.subject}
                   onChange={handleChange}
                   error={errors.subject}
+                  className="bg-white"
                   required
                 />
                 <Textarea
@@ -155,6 +159,7 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   error={errors.message}
+                  className="bg-white"
                   required
                 />
                 {submitStatus === "success" && (
@@ -252,9 +257,9 @@ export default function ContactPage() {
       </section>
 
       {/* FAQs Section */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="py-20 md:py-32 bg-black">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             {/* Left Column - Heading */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -263,10 +268,10 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
               className="lg:sticky lg:top-24 h-fit"
             >
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
                 Frequently Asked Questions
               </h2>
-              <p className="text-black text-lg leading-relaxed">
+              <p className="text-white text-base sm:text-lg leading-relaxed">
                 Find answers to common questions about our photography services, booking process, and more.
               </p>
             </motion.div>

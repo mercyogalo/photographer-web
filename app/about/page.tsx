@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 import HeroNavbar from "@/components/HeroNavbar";
 import { SERVICES } from "@/lib/constants";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import { ArrowRight } from "lucide-react";
 export default function AboutPage() {
   return (
     <div className="bg-white">
       <HeroNavbar />
 
-      {/* Hero Section - reuse portfolio layout */}
+     
       <section className="bg-[#fafafa] py-32 text-center">
         <h1 className="font-playfair text-6xl lg:text-8xl tracking-wide text-brown">
           ABOUT
@@ -21,11 +22,11 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* About Content Section */}
+    
       <section className="py-20 md:py-32 bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Image with Decorative Border */}
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -40,22 +41,22 @@ export default function AboutPage() {
                   fill
                   className="object-cover"
                 />
-                {/* Decorative Border - Top and Left */}
+               
                 <div className="absolute top-0 left-0 w-1/2 h-1/2 border-t-4 border-l-4 border-white rounded-tl-lg" />
               </div>
             </motion.div>
 
-            {/* Right Column - Content */}
+            
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-brown">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-6 text-brown">
                 Our Story
               </h2>
-              <p className="text-black mb-4 leading-relaxed">
+              <p className="text-white text-sm sm:text-base md:text-lg mb-4 leading-relaxed">
                 With over a decade of experience in professional photography, PhotoStudio has been dedicated to capturing life's most precious moments. Our journey began with a simple passion for storytelling through images, and has evolved into a full-service photography studio serving clients worldwide.
               </p>
               <p className="text-black mb-4 leading-relaxed">
@@ -73,24 +74,24 @@ export default function AboutPage() {
       </section>
 
 
-         {/* Services Section */}
+       
       <section className="py-20 md:py-32 bg-white">
-        <div className="container-custom">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 text-brown">
               Our Services
             </h2>
-            <p className="text-black max-w-2xl mx-auto">
+            <p className="text-white text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
               Professional photography services tailored to your needs
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
             {SERVICES.slice(0, 4).map((service, index) => (
               <motion.div
                 key={service.id}
@@ -121,7 +122,33 @@ export default function AboutPage() {
         </div>
       </section>
       
+ 
+  <section className="py-20 md:py-32 bg-black">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <h2  style={{ fontFamily: '"Times New Roman", Times, serif' }}  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-brown">
+              Motivation
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto">
+              Discover what drives us to capture life's most precious moments
+            </p>
+          </motion.div>
 
+         
+          <div className="w-full">
+            <FAQ />
+          </div>
+        </div>
+      </section>
+
+
+      <Testimonials />
 
         <section className="lg:py-42 md:py-40 py-32 relative">
   <div className="absolute inset-0 ">
@@ -158,7 +185,6 @@ export default function AboutPage() {
 
 
 
-      <Testimonials />
 
     
     </div>

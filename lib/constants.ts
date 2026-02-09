@@ -143,43 +143,24 @@ export const COMPANY_LOGOS = [
 export const FAQS = [
   {
     id: 1,
-    question: "How far in advance should I book a session?",
+    question: "Love at first sight",
     answer: "We recommend booking at least 2-4 weeks in advance for portrait sessions and 3-6 months in advance for weddings and major events. However, we do accommodate last-minute bookings when availability permits.",
   },
   {
     id: 2,
-    question: "What is included in your photography packages?",
+    question: "Photography for me",
     answer: "Our packages include professional photography services, edited high-resolution images, online gallery access, and print release. Additional services like albums, prints, and extended coverage can be added to any package.",
   },
   {
     id: 3,
-    question: "Do you travel for photoshoots?",
+    question: "What drives me",
     answer: "Yes, we travel for photoshoots! Local travel within 50 miles is included in our packages. For destinations beyond that, we charge a reasonable travel fee. We've photographed events and sessions across the country.",
   },
   {
     id: 4,
-    question: "How long until I receive my photos?",
+    question: "What i loveabout photography",
     answer: "Portrait sessions typically take 1-2 weeks for delivery, while weddings and events take 4-6 weeks. Rush editing services are available for an additional fee if you need your photos sooner.",
   },
-  {
-    id: 5,
-    question: "Can I request specific editing styles?",
-    answer: "Absolutely! We work closely with clients to understand their vision and preferred editing style. During our consultation, we'll discuss your preferences, and we're happy to accommodate specific requests.",
-  },
-  {
-    id: 6,
-    question: "Do you provide raw/unedited photos?",
-    answer: "We provide professionally edited high-resolution JPEG files. Raw files are not typically included in our packages, but can be purchased separately if needed for your specific requirements.",
-  },
-  {
-    id: 7,
-    question: "What happens if it rains on our scheduled outdoor shoot?",
-    answer: "We always have a backup plan! We can reschedule to another date, move to an indoor location, or work with the weather creatively. We'll discuss options with you as soon as we know about potential weather issues.",
-  },
-  {
-    id: 8,
-    question: "How many photos will I receive?",
-    answer: "The number of photos depends on the type and duration of the session. Portrait sessions typically include 30-50 edited images, while weddings can include 400-800+ images. We focus on quality over quantity, ensuring every image meets our high standards.",
-  },
+
 ];
 

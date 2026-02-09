@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [direction, setDirection] = useState(0);
 
   const testimonials = [
     {
@@ -34,78 +35,64 @@ export default function Testimonials() {
   useEffect(() => {
     if (!isPaused) {
       const interval = setInterval(() => {
-        changeSlide('next');
-      }, 5000); // Change slide every 5 seconds
-
-      return () => clearInterval(interval);
-    }
-  }, [isPaused, testimonials.length, currentIndex]);
-
-  const changeSlide = (direction) => {
-    if (isTransitioning) return;
-    
-    setIsTransitioning(true);
-    
-    
-    setTimeout(() => {
-      if (direction === 'next') {
+        setDirection(1);
         setCurrentIndex((prevIndex) =>
           prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
         );
-      } else {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-        );
-      }
-      
-      // Wait a bit then fade in
-      setTimeout(() => {
-        setIsTransitioning(false);
-      }, 50);
-    }, 400); // Duration of fade out
-  };
+      }, 8000); 
+
+      return () => clearInterval(interval);
+    }
+  }, [isPaused, testimonials.length]);
 
   const nextSlide = () => {
-    changeSlide('next');
+    setDirection(1);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const prevSlide = () => {
-    changeSlide('prev');
+    setDirection(-1);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
   };
 
-  const goToSlide = (index) => {
-    if (isTransitioning || index === currentIndex) return;
-    
-    setIsTransitioning(true);
-    
-    setTimeout(() => {
-      setCurrentIndex(index);
-      setTimeout(() => {
-        setIsTransitioning(false);
-      }, 50);
-    }, 400);
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? '-100%' : '100%',
+      opacity: 0
+    })
   };
 
   return (
-    <section className="w-full py-24 px-4 bg-[#fafafa]">
+    <section className="w-full py-24 px-4 bg-[#E3E4E2]">
         <div className="row">
           <div className="col-12">
-            {/* Main Heading */}
-            <h4 className="text-3xl md:text-3xl lg:text-3xl font-bold text-center mb-16 text-gray-900">
+           
+            <h4 className="text-3xl md:text-3xl lg:text-3xl font-bold text-center mb-5 text-black">
               CLIENTS LOVE
             </h4>
 
-            {/* Carousel Container */}
+           
             <div 
-              className="relative max-w-5xl mx-auto"
+              className="relative max-w-5xl mx-auto overflow-hidden"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
-              {/* Navigation Arrows */}
+            
               <button
                 onClick={prevSlide}
-                disabled={isTransitioning}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 lg:-translate-x-16 z-10 text-black hover:text-gray-600 transition-colors disabled:opacity-50"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 lg:-translate-x-16 z-10 text-black hover:text-gray-300 transition-colors"
                 aria-label="Previous testimonial"
               >
                 <svg
@@ -125,8 +112,7 @@ export default function Testimonials() {
 
               <button
                 onClick={nextSlide}
-                disabled={isTransitioning}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 lg:translate-x-16 z-10 text-black hover:text-gray-600 transition-colors disabled:opacity-50"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 lg:translate-x-16 z-10 text-black hover:text-gray-300 transition-colors"
                 aria-label="Next testimonial"
               >
                 <svg
@@ -145,31 +131,35 @@ export default function Testimonials() {
               </button>
 
              
-              <div className="flex flex-col justify-center min-h-[400px]">
-                <div 
-                  className={`text-center transition-opacity duration-400 ${
-                    isTransitioning ? 'opacity-0' : 'opacity-100'
-                  }`}
-                >
-                 
-                  <h3 className="text-2xl md:text-3xl italic lg:text-4xl font-semibold mb-6 text-black">
-                    "{testimonials[currentIndex].headline}"
-                  </h3>
+              <div className="flex flex-col justify-center min-h-[400px] relative">
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.div
+                    key={currentIndex}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      x: { type: "spring", stiffness: 300, damping: 30 },
+                      opacity: { duration: 0.2 }
+                    }}
+                    className="text-center"
+                  >
+                    <h3 className="text-2xl md:text-2xl italic lg:text-3xl italic mb-6 text-black">
+                      "{testimonials[currentIndex].headline}"
+                    </h3>
 
-                  
-                  <p className="text-lg md:text-xl text-black leading-relaxed mb-8 max-w-3xl mx-auto">
-                    {testimonials[currentIndex].review}
-                  </p>
+                    <p className="text-lg md:text-xl text-black leading-relaxed mb-8 max-w-3xl mx-auto">
+                      {testimonials[currentIndex].review}
+                    </p>
 
-                 
-                  <p className="text-xl md:text-2xl font-semibold text-black">
-                    {testimonials[currentIndex].reviewer}
-                  </p>
-                </div>
+                    <p className="text-xl md:text-2xl font-semibold text-black">
+                      {testimonials[currentIndex].reviewer}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
               </div>
-
-             
-
             </div>
           </div>
         </div>
