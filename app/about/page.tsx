@@ -40,7 +40,7 @@ export default function AboutPage() {
                 className="col-span-2 h-[280px] rounded-[36px] bg-cover bg-center"
                 style={{
                   backgroundImage:
-                    "url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200')",
+                    "url('/images/Global/FulgenceImage-1.jpeg')",
                   backgroundPosition: "center top",
                 }}
               />
@@ -50,7 +50,7 @@ export default function AboutPage() {
             className="h-[140px] rounded-[36px] bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200')",
+                "url('/images/Global/FulgenceImage-1.jpeg')",
               backgroundPosition: "left center",
             }}
           />
@@ -60,7 +60,7 @@ export default function AboutPage() {
             className="h-[120px] rounded-[36px] bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200')",
+                "url('/images/Global/FulgenceImage-1.jpeg')",
               backgroundPosition: "right bottom",
             }}
           />
@@ -107,9 +107,9 @@ export default function AboutPage() {
         transition={{ duration: 0.6 }}
         className="flex justify-center"
       >
-        <div className="relative w-full max-w-md aspect-[4/5] rounded-2xl overflow-hidden">
+        <div className="relative w-full max-w-md aspect-[4/5] rounded-none overflow-hidden">
           <Image
-            src="/images/Hero/hero-3.jpg"
+            src="/images/Global/personal-image1.jpeg"
             alt="Our Story"
             fill
             className="object-cover"
@@ -228,7 +228,7 @@ export default function AboutPage() {
         <section className="lg:py-42 md:py-40 py-32 relative">
   <div className="absolute inset-0 ">
     <Image
-      src="/images/Hero/hero-3.jpg"
+      src="/images/Global/home-services.jpg"
       alt="Background"
       fill
       className="object-cover"

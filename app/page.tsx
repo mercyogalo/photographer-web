@@ -99,14 +99,20 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 flex-1">
           <HeroCarousel
             images={[
-              "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80",
-              "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80",
+              "/images/Hero/image-1.jpg",
+              "/images/Hero/image-2.jpg",
+              "/images/Hero/image-3.jpg",
+              "/images/Hero/image-4.jpg",
+              "/images/Hero/image-5.jpg",
             ]}
           />
           <HeroCarousel
             images={[
-              "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80",
-              "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80",
+              "/images/Hero/image-6.jpg",
+              "/images/Hero/image-7.jpg",
+              "/images/Hero/image-8.jpg",
+              "/images/Hero/image-9.jpg",
+              "/images/Hero/image-10.jpg"
             ]}
             interval={4500}
           />
@@ -171,7 +177,7 @@ export default function Home() {
               className="relative h-[420px] md:h-[520px]"
             >
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80"
+                src="/images/Global/personal-image1.jpeg"
                 alt="Artist"
                 fill
                 className="object-cover"
@@ -303,7 +309,7 @@ export default function Home() {
       <section className="lg:py-42 md:py-40 py-32 relative">
   <div className="absolute inset-0 ">
     <Image
-      src="/images/Hero/hero-3.jpg"
+      src="/images/Global/home-services.jpg"
       alt="Background"
       fill
       className="object-cover"

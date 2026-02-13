@@ -66,24 +66,29 @@ export const BEST_SHOTS = [
 ];
 
 export const PORTFOLIO_IMAGES = [
-  { id: 1, category: "Portrait", url: "/images/Portfolio/portfolio1.jpg", title: "Portrait Session" },
-  { id: 2, category: "Fashion", url: "/images/Portfolio/portfolio2.jpg", title: "Fashion Editorial" },
-  { id: 3, category: "Landscape", url: "/images/Portfolio/portfolio3.jpg", title: "Corporate Event" },
-  { id: 5, category: "Animal", url: "/images/Portfolio/portfolio4.jpg", title: "Wildlife" },
-  { id: 6, category: "Portrait", url: "/images/Portfolio/portfolio5.jpg", title: "Fashion Shoot" },
-  { id: 8, category: "Landscape", url: "/images/Portfolio/portfolio6.jpg", title: "Sunset Beach" },
-  { id: 9, category: "Events", url: "/images/Portfolio/portfolio7.jpg", title: "Wedding" },
-  { id: 10, category: "Animal", url: "/images/Portfolio/portfolio8.jpg", title: "Nature" },
-  { id: 11, category: "Portrait", url: "/images/Portfolio/portfolio11.jpg", title: "Portrait Session" },
-  { id: 12, category: "Fashion", url: "/images/Portfolio/portfolio11.jpg", title: "Fashion Editorial" },
-  { id: 13, category: "Landscape", url: "/images/Portfolio/portfolio11.jpg", title: "Forest Path" },
-  { id: 14, category: "Events", url: "/images/Portfolio/portfolio12.jpg", title: "Concert" },
-  { id: 15, category: "Animal", url: "https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=1200&h=1600&fit=crop", title: "Wildlife" },
-  { id: 16, category: "Portrait", url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&h=1600&fit=crop", title: "Portrait Session" },
-  { id: 17, category: "Fashion", url: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=1200&h=1600&fit=crop", title: "Fashion Shoot" },
-  { id: 18, category: "Landscape", url: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&h=1600&fit=crop", title: "Ocean View" },
-  { id: 19, category: "Events", url: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=1600&fit=crop", title: "Birthday Party" },
-  { id: 20, category: "Animal", url: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=1200&h=1600&fit=crop", title: "Wildlife" },
+  { id: 1,  url: "/images/Portfolio/portfolio1.jpg", title: "Fulgence Images" },
+  { id: 2, url: "/images/Portfolio/portfolio2.jpg", title: "Fulgence Images" },
+  { id: 3,  url: "/images/Portfolio/portfolio3.jpg", title: "Fulgence Images" },
+  { id: 5, url: "/images/Portfolio/portfolio4.jpg", title: "Fulgence Images" },
+  { id: 6, url: "/images/Portfolio/portfolio5.jpg", title: "Fulgence Images" },
+  { id: 8,  url: "/images/Portfolio/portfolio6.jpg", title: "Fulgence Images" },
+  { id: 9,  url: "/images/Portfolio/portfolio7.jpg", title: "Fulgence Images" },
+  { id: 10, url: "/images/Portfolio/portfolio8.jpg", title: "Fulgence Images" },
+ 
+  { id: 13,  url: "/images/Portfolio/portfolio11.jpg", title: "Fulgence Images" },
+  { id: 14,  url: "/images/Portfolio/portfolio12.jpg", title: "Fulgence Images" },
+  
+  { id: 16,  url: "/images/Portfolio/portfolio14.jpg",title:"Fulgence Images"},
+  
+  { id: 18,  url: "/images/Portfolio/portfolio16.jpg", title: "Fulgence Images" },
+  { id: 19,  url: "/images/Portfolio/portfolio17.jpg", title: "Fulgence Images" },
+  { id: 20,  url: "/images/Portfolio/portfolio18.jpg", title: "Fulgence Images" },
+   { id: 21,  url: "/images/Portfolio/portfolio19.jpg", title:"Fulgence Images" },
+   { id: 22,  url: "/images/Portfolio/portfolio20.jpg", title:"Fulgence Images" },
+  { id: 23,  url: "/images/Portfolio/portfolio21.jpg", title:"Fulgence Images" },
+  { id: 24,  url: "/images/Portfolio/portfolio22.jpg", title:"Fulgence Images" },
+  { id: 25,  url: "/images/Portfolio/portfolio23.jpg", title:"Fulgence Images" },
+   
 ];
 
 export const TESTIMONIALS = [

@@ -42,19 +42,19 @@ export default function ServicesPage() {
         <HeroNavbar />
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Hero/hero-3.jpg"
+            src="/images/Global/services-image1.jpg"
             alt="Services"
             fill
             className="object-cover "
           />
         </div>
-        <div className="absolute inset-0 bg-gray-900/60 z-10" />
+        <div className="absolute inset-0  z-10" />
         <div className="relative z-20 text-left text-white px-4 md:px-8 lg:px-12 xl:px-16">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-brown text-left"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-white text-left"
           >
             Our Services
           </motion.h1>
