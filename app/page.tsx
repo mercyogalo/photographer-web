@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -14,7 +13,12 @@ import { PORTFOLIO_IMAGES, BEST_SHOTS, SERVICES } from "@/lib/constants";
 import ScrollCarousel from "@/components/Scrollcarousel";
 import Testimonials from "@/components/Testimonials";
 
-function HeroCarousel({ images, interval = 4000 }) {
+interface HeroCarouselProps {
+  images: string[];
+  interval?: number;
+}
+
+function HeroCarousel({ images, interval = 4000 }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -200,11 +204,11 @@ export default function Home() {
               </h2>
 
               <p className="mb-6 text-white/90">
-                We believe every moment tells a story. From weddings and special events to wildlife and documentary photography, we capture life’s beauty with creativity, precision and passion. Every image is crafted to preserve memories, evoke emotion and celebrate the world around us.
+                We believe every moment tells a story. From weddings and special events to wildlife and documentary photography, we capture life&apos;s beauty with creativity, precision and passion. Every image is crafted to preserve memories, evoke emotion and celebrate the world around us.
               </p>
 
               <p className="mb-10 text-white/90">
-               Our work goes beyond just taking pictures it’s about telling stories that matter. Whether it’s the laughter of a wedding, the elegance of a bird in flight, or the raw truth of a documentary moment, Rabach Creations turns fleeting instants into timeless memories you’ll cherish forever.
+               Our work goes beyond just taking pictures it&apos;s about telling stories that matter. Whether it&apos;s the laughter of a wedding, the elegance of a bird in flight, or the raw truth of a documentary moment, Rabach Creations turns fleeting instants into timeless memories you&apos;ll cherish forever.
               </p>
 
               <Link
@@ -344,9 +348,6 @@ export default function Home() {
       <Testimonials />
 
       <ScrollCarousel />
-
-             
-           
 
     </div>
   );
