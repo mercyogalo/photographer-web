@@ -11,11 +11,13 @@ function ParallaxCard({
   speed,
   fixedHeight,
   extraClass,
+  className,
 }: {
-  image: { id: string; url: string; title: string };
+  image: { id: number | string; url: string; title: string };
   speed: number;
   fixedHeight?: string;
   extraClass?: string;
+  className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [orientation, setOrientation] = useState<"portrait" | "landscape">(

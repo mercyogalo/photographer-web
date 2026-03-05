@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function ScrollCarousel() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const sectionRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
-  const slides = [
+  const slides: { image: string }[] = [
     {
       image: 'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=1200&h=1600&fit=crop',
     },
@@ -22,10 +22,10 @@ export default function ScrollCarousel() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+        if (!sectionRef.current) return;
 
-      const section = sectionRef.current;
-      const rect = section.getBoundingClientRect();
+        const section = sectionRef.current as HTMLDivElement;
+        const rect = section.getBoundingClientRect();
       
       // Calculate scroll progress within the section (0 to 1)
       const sectionTop = rect.top;
@@ -41,7 +41,7 @@ export default function ScrollCarousel() {
   }, []);
 
   // Calculate transform for each slide based on scroll progress
-  const getSlideTransform = (index) => {
+  const getSlideTransform = (index: number): string => {
     const totalSlides = slides.length;
     const progressPerSlide = 1 / (totalSlides - 1);
     
