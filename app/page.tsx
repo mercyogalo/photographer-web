@@ -103,20 +103,20 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 flex-1">
           <HeroCarousel
             images={[
-              "/Images/Hero/image-1.jpg",
-              "/Images/Hero/image-2.jpg",
-              "/Images/Hero/image-3.jpg",
-              "/Images/Hero/image-4.jpg",
-              "/Images/Hero/image-5.jpg",
+              "/images/Hero/Image-1.jpg",
+              "/images/Hero/Image-2.jpg",
+              "/images/Hero/Image-3.jpg",
+              "/images/Hero/Image-4.jpg",
+              "/images/Hero/Image-5.jpg",
             ]}
           />
           <HeroCarousel
             images={[
-              "/Images/Hero/image-6.jpg",
-              "/Images/Hero/image-7.jpg",
-              "/Images/Hero/image-8.jpg",
-              "/Images/Hero/image-9.jpg",
-              "/Images/Hero/image-10.jpg"
+              "/images/Hero/Image-6.jpg",
+              "/images/Hero/Image-7.jpg",
+              "/images/Hero/Image-8.jpg",
+              "/images/Hero/Image-9.jpg",
+              "/images/Hero/Image-10.jpg"
             ]}
             interval={4500}
           />
