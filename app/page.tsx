@@ -228,7 +228,7 @@ export default function Home() {
 
 
        <section className="bg-white py-20 text-center">
-        <h3 className="text-lg font-playfair">Featured WEDDINGS</h3>
+        <h3 className="text-lg font-playfair">FEATURED WORK</h3>
         <h2 className="lg:text-5xl mt-2 font-montserrat">A visual journey of love and timeless wedding stories.</h2>
       </section>
 
